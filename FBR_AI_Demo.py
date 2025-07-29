@@ -10,15 +10,16 @@ from sklearn.model_selection import train_test_split
 import streamlit as st
 import plotly.graph_objects as go
 import plotly.express as px
-from clickhouse_driver import Client
+import clickhouse_connect
 
 # ClickHouse连接配置
 CLICKHOUSE_CONFIG = {
-    'host': 'your_host',
-    'port': 9000,
+    'host': 'clickhouse-0-0.umetea.net',
+    'port': 443,
     'database': 'dw',
-    'user': 'your_user',
-    'password': 'your_password'
+    'user': 'ml_ume',
+    'password': 'hDAoDvg8x552bH',
+    'verify':False
 }
 
 
@@ -26,7 +27,7 @@ class FBRGrowthEngine:
     """FBR餐饮AI增长引擎"""
 
     def __init__(self):
-        self.ch_client = Client(**CLICKHOUSE_CONFIG)
+        self.ch_client = clickhouse_connect.get_client(**CLICKHOUSE_CONFIG)
 
     def load_sales_data(self, days_back=90):
         """加载历史销售数据"""
@@ -49,7 +50,7 @@ class FBRGrowthEngine:
         GROUP BY date, location_id, location_name
         ORDER BY date DESC
         """
-        return pd.DataFrame(self.ch_client.execute(query, with_column_types=True))
+        return self.ch_client.query_df(query)
 
     def load_item_performance(self, days=30):
         """加载商品销售表现"""
@@ -71,7 +72,7 @@ class FBRGrowthEngine:
         GROUP BY item_name, category_name, date
         ORDER BY revenue DESC
         """
-        return pd.DataFrame(self.ch_client.execute(query, with_column_types=True))
+        return self.ch_client.query_df(query)
 
     def load_customer_segments(self):
         """加载客户分群数据"""
@@ -91,7 +92,7 @@ class FBRGrowthEngine:
         WHERE order_final_total_cnt > 0
         GROUP BY customer_segment
         """
-        return pd.DataFrame(self.ch_client.execute(query, with_column_types=True))
+        return self.ch_client.query_df(query)
 
     def predict_next_week_sales(self, location_id=None):
         """预测下周销量 - 使用Prophet"""
@@ -148,6 +149,9 @@ class FBRGrowthEngine:
         X = recent_data[features]
         y = recent_data['total_revenue']
 
+        # 类型转换
+        X = X.apply(pd.to_numeric, errors='coerce')
+
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
         model = xgb.XGBRegressor(n_estimators=100, max_depth=5, random_state=42)
@@ -170,7 +174,8 @@ class FBRGrowthEngine:
 
         recommendations = []
 
-        # 1. 爆品推荐
+        # 1.
+        item_perf['revenue'] = pd.to_numeric(item_perf['revenue'], errors='coerce')
         top_items = item_perf.nlargest(5, 'revenue')
         slow_items = item_perf[item_perf['units_sold'] < item_perf['units_sold'].quantile(0.2)]
 
@@ -322,7 +327,11 @@ def main():
 
         with col1:
             st.subheader("🔥 今日热销TOP5")
-            hot_items = engine.load_item_performance(days=1).nlargest(5, 'revenue')
+            # hot_items = engine.load_item_performance(days=1).nlargest(5, 'revenue')
+            hot_items = engine.load_item_performance(days=1)
+            # 类型转换
+            hot_items['revenue'] = pd.to_numeric(hot_items['revenue'], errors='coerce')
+            hot_items = hot_items.nlargest(5, 'revenue')
 
             fig_hot = px.bar(
                 hot_items,
@@ -453,7 +462,7 @@ def main():
             'loyalty_rate': '会员占比'
         }
 
-        fig_importance.update_yaxis(
+        fig_importance.update_yaxes(
             ticktext=[feature_names.get(f, f) for f in importance_df['feature']],
             tickvals=importance_df['feature']
         )
