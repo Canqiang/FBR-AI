@@ -140,3 +140,13 @@ class Settings:
                 logging.StreamHandler()
             ]
         )
+
+# 单例模式
+_settings = None
+
+def get_settings() -> Settings:
+    """获取全局配置实例"""
+    global _settings
+    if _settings is None:
+        _settings = Settings()
+    return _settings

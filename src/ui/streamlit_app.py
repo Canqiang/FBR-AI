@@ -528,3 +528,14 @@ class AIGrowthEngineUI:
             'content': ai_response,
             'timestamp': datetime.now()
         })
+
+
+# 主函数
+def main():
+    """运行Streamlit应用"""
+    app = AIGrowthEngineUI()
+    app.run()
+
+
+if __name__ == "__main__":
+    main()

@@ -8,7 +8,7 @@ import uvicorn
 from config.settings import get_settings
 from ..engine.core import AIGrowthEngineCore
 from ..engine.scheduler import TaskScheduler
-from .routes import router
+# from .routes import router
 from .schemas import HealthResponse
 
 logger = logging.getLogger(__name__)
@@ -60,7 +60,7 @@ app.add_middleware(
 )
 
 # 添加路由
-app.include_router(router, prefix="/api/v1")
+# app.include_router(router, prefix="/api/v1")
 
 
 # 全局异常处理

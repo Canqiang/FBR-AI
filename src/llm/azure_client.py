@@ -38,7 +38,7 @@ class AzureOpenAIClient:
                 deployment_name=self.settings.deployment,
                 openai_api_key=self.settings.api_key,
                 openai_api_version=self.settings.api_version,
-                openai_api_base=self.settings.endpoint,
+                azure_endpoint=self.settings.endpoint,
                 temperature=self.temperature,
                 callbacks=[LoggingCallbackHandler()]
             )
