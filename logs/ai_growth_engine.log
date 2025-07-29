@@ -1,0 +1,66 @@
+2025-07-29 15:34:43,235 - clickhouse_driver.connection - WARNING - Error on socket shutdown: [Errno 57] Socket is not connected
+2025-07-29 15:36:53,110 - clickhouse_driver.connection - WARNING - Failed to connect to clickhouse-0-0.umetea.net:9000
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 399, in connect
+    return self._init_connection(host, port)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 329, in _init_connection
+    self.socket = self._create_socket(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 301, in _create_socket
+    raise err
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_driver/connection.py", line 292, in _create_socket
+    sock.connect(sa)
+TimeoutError: timed out
+2025-07-29 15:40:53,318 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 15:40:53,598 - src.data.connectors - ERROR - Failed to convert to DataFrame: HTTPDriver for https://clickhouse-0-0.umetea.net:443 received ClickHouse error code 62
+ Code: 62. DB::Exception: Syntax error: failed at position 515 ('%') (line 20, col 32): %(start_date)s
+            AND created_at_pt < %(end_date)s
+            AND pay_status = 'COMPLETED'
+        
+ FORMAT Native. Expected one of: CAST operator, ANY, ALL, NOT, INTERVAL, CASE, DATE, TIMESTAMP, tuple, collection of literals, array, number, literal, NULL, NULL, Bool, TRUE, FALSE, string literal, asterisk, qualified asterisk, compound identifier, list of elements, identifier, COLUMNS matcher, COLUMNS, qualified COLUMNS matcher, function name, substitution, MySQL-style global variable. (SYNTAX_ERROR) (version 24.7.3.42 (official build))
+
+2025-07-29 15:41:48,586 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 15:43:54,159 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 15:44:32,430 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 15:44:32,738 - src.data.connectors - ERROR - Failed to convert to DataFrame: HTTPDriver for https://clickhouse-0-0.umetea.net:443 received ClickHouse error code 62
+ Code: 62. DB::Exception: Syntax error: failed at position 508 ('%') (line 20, col 32): %(start_date)s
+            AND created_at_pt < %(end_date)s
+            AND pay_status = 'COMPLETED'
+        
+ FORMAT Native. Expected one of: CAST operator, ANY, ALL, NOT, INTERVAL, CASE, DATE, TIMESTAMP, tuple, collection of literals, array, number, literal, NULL, NULL, Bool, TRUE, FALSE, string literal, asterisk, qualified asterisk, compound identifier, list of elements, identifier, COLUMNS matcher, COLUMNS, qualified COLUMNS matcher, function name, substitution, MySQL-style global variable. (SYNTAX_ERROR) (version 24.7.3.42 (official build))
+
+2025-07-29 16:16:37,508 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:21:03,540 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:21:03,547 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:21:03,547 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:21:03,547 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:22:09,847 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 16:25:09,329 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:25:09,336 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:25:09,336 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:25:09,336 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:26:15,584 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 16:27:09,345 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-29 16:27:12,627 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:27:12,634 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:27:12,634 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:27:12,634 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:27:18,802 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 16:28:12,642 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-29 16:28:16,332 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:28:16,368 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:28:16,368 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:28:16,369 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:29:08,929 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 16:29:16,375 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-29 16:29:19,438 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:29:19,445 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:29:19,445 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:29:19,445 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:29:25,421 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 16:30:19,452 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-29 16:30:22,577 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:30:22,583 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:30:22,583 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:30:22,584 - src.engine.scheduler - INFO - Task scheduler started
