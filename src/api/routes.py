@@ -16,7 +16,8 @@ from .schemas import (
     ItemPerformanceResponse
 )
 from ..engine.core import AIGrowthEngineCore
-from .app import get_engine
+# from .app import get_engine
+from .dependencies import get_engine
 
 router = APIRouter()
 

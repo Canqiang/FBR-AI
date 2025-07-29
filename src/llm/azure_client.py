@@ -1,6 +1,6 @@
 import logging
 from typing import Optional, List, Dict, Any
-from langchain_openai import AzureChatOpenAI
+from langchain_community.chat_models  import AzureChatOpenAI
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain.schema import BaseMessage, HumanMessage, SystemMessage, AIMessage
 
@@ -38,7 +38,7 @@ class AzureOpenAIClient:
                 deployment_name=self.settings.deployment,
                 openai_api_key=self.settings.api_key,
                 openai_api_version=self.settings.api_version,
-                azure_endpoint=self.settings.endpoint,
+                openai_api_base=self.settings.endpoint,
                 temperature=self.temperature,
                 callbacks=[LoggingCallbackHandler()]
             )

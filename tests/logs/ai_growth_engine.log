@@ -1,0 +1,26 @@
+2025-07-29 17:32:02,820 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:32:04,247 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 403 Forbidden"
+2025-07-29 17:32:04,250 - src.llm.azure_client - ERROR - LLM Error: Error code: 403 - {'error': {'code': '403', 'message': 'Access denied due to Virtual Network/Firewall rules.'}}
+2025-07-29 17:32:04,251 - src.llm.azure_client - ERROR - Chat failed: Error code: 403 - {'error': {'code': '403', 'message': 'Access denied due to Virtual Network/Firewall rules.'}}
+2025-07-29 17:33:24,783 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 403 Forbidden"
+2025-07-29 17:33:24,788 - src.llm.azure_client - ERROR - LLM Error: Error code: 403 - {'error': {'code': '403', 'message': 'Access denied due to Virtual Network/Firewall rules.'}}
+2025-07-29 17:33:24,789 - src.llm.azure_client - ERROR - Chat failed: Error code: 403 - {'error': {'code': '403', 'message': 'Access denied due to Virtual Network/Firewall rules.'}}
+2025-07-29 17:33:36,661 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 403 Forbidden"
+2025-07-29 17:33:36,664 - src.llm.azure_client - ERROR - LLM Error: Error code: 403 - {'error': {'code': '403', 'message': 'Access denied due to Virtual Network/Firewall rules.'}}
+2025-07-29 17:33:36,665 - src.llm.azure_client - ERROR - Chat failed: Error code: 403 - {'error': {'code': '403', 'message': 'Access denied due to Virtual Network/Firewall rules.'}}
+2025-07-29 17:35:16,174 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:35:17,528 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 403 Forbidden"
+2025-07-29 17:35:17,530 - src.llm.azure_client - ERROR - LLM Error: Error code: 403 - {'error': {'code': '403', 'message': 'Access denied due to Virtual Network/Firewall rules.'}}
+2025-07-29 17:35:17,530 - src.llm.azure_client - ERROR - Chat failed: Error code: 403 - {'error': {'code': '403', 'message': 'Access denied due to Virtual Network/Firewall rules.'}}
+2025-07-29 17:36:11,615 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:36:12,827 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 403 Forbidden"
+2025-07-29 17:36:12,828 - src.llm.azure_client - ERROR - LLM Error: Error code: 403 - {'error': {'code': '403', 'message': 'Access denied due to Virtual Network/Firewall rules.'}}
+2025-07-29 17:36:12,828 - src.llm.azure_client - ERROR - Chat failed: Error code: 403 - {'error': {'code': '403', 'message': 'Access denied due to Virtual Network/Firewall rules.'}}
+2025-07-29 17:36:28,493 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 403 Forbidden"
+2025-07-29 17:36:28,495 - src.llm.azure_client - ERROR - LLM Error: Error code: 403 - {'error': {'code': '403', 'message': 'Access denied due to Virtual Network/Firewall rules.'}}
+2025-07-29 17:36:28,495 - src.llm.azure_client - ERROR - Chat failed: Error code: 403 - {'error': {'code': '403', 'message': 'Access denied due to Virtual Network/Firewall rules.'}}
+2025-07-29 17:37:35,979 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 403 Forbidden"
+2025-07-29 17:59:09,951 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4
+2025-07-29 17:59:15,326 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:59:17,336 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-29 18:00:59,701 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"

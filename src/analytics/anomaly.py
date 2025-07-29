@@ -123,6 +123,10 @@ class AnomalyDetectionEngine:
             # 比较前后两个窗口
             before = data[metric].iloc[i - window_size * 2:i - window_size]
             after = data[metric].iloc[i - window_size:i]
+            before = pd.Series(before).astype(float)
+            before = before.replace([np.inf, -np.inf], np.nan).dropna().values
+            after = pd.Series(after).astype(float)
+            after = after.replace([np.inf, -np.inf], np.nan).dropna().values
 
             # 使用t检验检测均值变化
             t_stat, p_value = stats.ttest_ind(before, after)

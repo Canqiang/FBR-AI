@@ -6,8 +6,13 @@ import numpy as np
 from datetime import datetime, timedelta
 import requests
 from typing import Dict, Any, List
+import sys
+import os
 
-from .components import (
+# 动态把根目录加到 sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+
+from src.ui.components import (
     MetricsCard,
     SalesChart,
     CustomerSegmentChart,

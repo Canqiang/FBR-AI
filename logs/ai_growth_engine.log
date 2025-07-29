@@ -64,3 +64,1847 @@ TimeoutError: timed out
 2025-07-29 16:30:22,583 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
 2025-07-29 16:30:22,583 - src.engine.scheduler - INFO - Scheduled hourly monitoring
 2025-07-29 16:30:22,584 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:35:01,568 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 16:35:22,638 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-29 16:35:25,684 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:35:25,690 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:35:25,690 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:35:25,690 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:43:13,740 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:43:13,746 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:43:13,746 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:43:13,746 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:44:14,096 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 16:47:42,417 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:47:42,425 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:47:42,425 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:47:42,425 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:47:53,770 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 16:48:51,855 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:48:51,863 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 16:48:51,871 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:48:51,877 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:48:51,877 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:48:51,877 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:48:59,807 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 16:48:59,809 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 16:49:01,760 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 16:49:01,989 - src.data.connectors - ERROR - Failed to convert to DataFrame: HTTPDriver for https://clickhouse-0-0.umetea.net:443 received ClickHouse error code 62
+ Code: 62. DB::Exception: Syntax error: failed at position 612 ('%') (line 12, col 32): %(start_date)s
+            AND created_at_pt < %(end_date)s
+            AND pay_status = 'COMPLETED'
+         GROUP BY date, location_id ORDER BY date DESC
+ FOR. Expected one of: CAST operator, ANY, ALL, NOT, INTERVAL, CASE, DATE, TIMESTAMP, tuple, collection of literals, array, number, literal, NULL, NULL, Bool, TRUE, FALSE, string literal, asterisk, qualified asterisk, compound identifier, list of elements, identifier, COLUMNS matcher, COLUMNS, qualified COLUMNS matcher, function name, substitution, MySQL-style global variable. (SYNTAX_ERROR) (version 24.7.3.42 (official build))
+
+2025-07-29 16:49:01,989 - src.engine.core - ERROR - Daily analysis failed: HTTPDriver for https://clickhouse-0-0.umetea.net:443 received ClickHouse error code 62
+ Code: 62. DB::Exception: Syntax error: failed at position 612 ('%') (line 12, col 32): %(start_date)s
+            AND created_at_pt < %(end_date)s
+            AND pay_status = 'COMPLETED'
+         GROUP BY date, location_id ORDER BY date DESC
+ FOR. Expected one of: CAST operator, ANY, ALL, NOT, INTERVAL, CASE, DATE, TIMESTAMP, tuple, collection of literals, array, number, literal, NULL, NULL, Bool, TRUE, FALSE, string literal, asterisk, qualified asterisk, compound identifier, list of elements, identifier, COLUMNS matcher, COLUMNS, qualified COLUMNS matcher, function name, substitution, MySQL-style global variable. (SYNTAX_ERROR) (version 24.7.3.42 (official build))
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 51, in run_daily_analysis
+    data = self._collect_daily_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 110, in _collect_daily_data
+    'daily_sales': self.order_repo.get_daily_sales(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/repositories.py", line 107, in get_daily_sales
+    return self.db.execute_df(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 54, in execute_df
+    return self.client.query_df(query)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 406, in query_df
+    return self._context_query(locals(), use_numpy=True, as_pandas=True).df_result
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 869, in _context_query
+    return self._query_with_context((self.create_query_context(**kwargs)))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 243, in _query_with_context
+    response = self._raw_request(body,
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 481, in _raw_request
+    self._error_handler(response)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 402, in _error_handler
+    raise OperationalError(err_str) if retried else DatabaseError(err_str) from None
+clickhouse_connect.driver.exceptions.DatabaseError: HTTPDriver for https://clickhouse-0-0.umetea.net:443 received ClickHouse error code 62
+ Code: 62. DB::Exception: Syntax error: failed at position 612 ('%') (line 12, col 32): %(start_date)s
+            AND created_at_pt < %(end_date)s
+            AND pay_status = 'COMPLETED'
+         GROUP BY date, location_id ORDER BY date DESC
+ FOR. Expected one of: CAST operator, ANY, ALL, NOT, INTERVAL, CASE, DATE, TIMESTAMP, tuple, collection of literals, array, number, literal, NULL, NULL, Bool, TRUE, FALSE, string literal, asterisk, qualified asterisk, compound identifier, list of elements, identifier, COLUMNS matcher, COLUMNS, qualified COLUMNS matcher, function name, substitution, MySQL-style global variable. (SYNTAX_ERROR) (version 24.7.3.42 (official build))
+
+2025-07-29 16:49:01,995 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 16:53:47,727 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 16:53:51,905 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-29 16:53:55,217 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:53:55,225 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 16:53:55,232 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:53:55,237 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:53:55,237 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:53:55,237 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:55:53,469 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 16:55:55,242 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-29 16:55:58,515 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:55:58,523 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 16:55:58,530 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:55:58,535 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:55:58,535 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:55:58,536 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:55:58,540 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 16:55:58,540 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 16:56:00,537 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 16:56:03,763 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 16:56:05,987 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 16:56:06,880 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 16:56:06,881 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 16:56:06,997 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 16:56:06,999 - src.engine.core - ERROR - Daily analysis failed: data type <class 'numpy.object_'> not inexact
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 55, in run_daily_analysis
+    anomalies = self._detect_anomalies(data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 136, in _detect_anomalies
+    pattern_changes = self.anomaly_detector.detect_pattern_changes(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/anomaly.py", line 128, in detect_pattern_changes
+    t_stat, p_value = stats.ttest_ind(before, after)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/_lib/deprecation.py", line 234, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py", line 586, in axis_nan_policy_wrapper
+    res = hypotest_fun_out(*samples, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 6679, in ttest_ind
+    v1 = _var(a, axis, ddof=1, xp=xp)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1211, in _var
+    var = _moment(x, 2, axis, mean=mean, xp=xp)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1193, in _moment
+    a_zero_mean = _demean(a, mean, axis, xp=xp)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1132, in _demean
+    eps = xp.finfo(mean.dtype).eps * 10
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/numpy/core/getlimits.py", line 516, in __new__
+    raise ValueError("data type %r not inexact" % (dtype))
+ValueError: data type <class 'numpy.object_'> not inexact
+2025-07-29 16:56:07,004 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 16:56:07,010 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 16:56:07,010 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 16:56:09,552 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 16:56:09,552 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 16:56:09,662 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 16:56:09,663 - src.engine.core - ERROR - Daily analysis failed: data type <class 'numpy.object_'> not inexact
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 55, in run_daily_analysis
+    anomalies = self._detect_anomalies(data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 136, in _detect_anomalies
+    pattern_changes = self.anomaly_detector.detect_pattern_changes(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/anomaly.py", line 128, in detect_pattern_changes
+    t_stat, p_value = stats.ttest_ind(before, after)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/_lib/deprecation.py", line 234, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py", line 586, in axis_nan_policy_wrapper
+    res = hypotest_fun_out(*samples, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 6679, in ttest_ind
+    v1 = _var(a, axis, ddof=1, xp=xp)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1211, in _var
+    var = _moment(x, 2, axis, mean=mean, xp=xp)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1193, in _moment
+    a_zero_mean = _demean(a, mean, axis, xp=xp)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1132, in _demean
+    eps = xp.finfo(mean.dtype).eps * 10
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/numpy/core/getlimits.py", line 516, in __new__
+    raise ValueError("data type %r not inexact" % (dtype))
+ValueError: data type <class 'numpy.object_'> not inexact
+2025-07-29 16:56:09,663 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 16:56:18,578 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 16:56:18,579 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 16:56:21,442 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 16:56:21,442 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 16:56:21,554 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 16:56:21,555 - src.engine.core - ERROR - Daily analysis failed: data type <class 'numpy.object_'> not inexact
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 55, in run_daily_analysis
+    anomalies = self._detect_anomalies(data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 136, in _detect_anomalies
+    pattern_changes = self.anomaly_detector.detect_pattern_changes(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/anomaly.py", line 128, in detect_pattern_changes
+    t_stat, p_value = stats.ttest_ind(before, after)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/_lib/deprecation.py", line 234, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py", line 586, in axis_nan_policy_wrapper
+    res = hypotest_fun_out(*samples, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 6679, in ttest_ind
+    v1 = _var(a, axis, ddof=1, xp=xp)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1211, in _var
+    var = _moment(x, 2, axis, mean=mean, xp=xp)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1193, in _moment
+    a_zero_mean = _demean(a, mean, axis, xp=xp)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1132, in _demean
+    eps = xp.finfo(mean.dtype).eps * 10
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/numpy/core/getlimits.py", line 516, in __new__
+    raise ValueError("data type %r not inexact" % (dtype))
+ValueError: data type <class 'numpy.object_'> not inexact
+2025-07-29 16:56:26,482 - src.llm.agents - ERROR - Agent chat failed: "Input to ChatPromptTemplate is missing variables {'tools'}.  Expected: ['agent_scratchpad', 'chat_history', 'input', 'tools'] Received: ['input', 'chat_history', 'intermediate_steps', 'agent_scratchpad']\nNote: if you intended {tools} to be part of the string and not a variable, please escape it with double curly braces like: '{{tools}}'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT "
+2025-07-29 16:56:43,263 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:56:43,271 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 16:56:43,279 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 16:56:43,285 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 16:56:43,285 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 16:56:43,285 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 16:56:47,799 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 16:56:47,799 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 16:56:49,486 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 16:56:52,766 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 16:56:55,041 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 16:56:55,945 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 16:56:55,946 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 16:56:56,060 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 16:56:56,060 - src.engine.core - ERROR - Daily analysis failed: data type <class 'numpy.object_'> not inexact
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 55, in run_daily_analysis
+    anomalies = self._detect_anomalies(data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 136, in _detect_anomalies
+    pattern_changes = self.anomaly_detector.detect_pattern_changes(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/anomaly.py", line 128, in detect_pattern_changes
+    t_stat, p_value = stats.ttest_ind(before, after)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/_lib/deprecation.py", line 234, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py", line 586, in axis_nan_policy_wrapper
+    res = hypotest_fun_out(*samples, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 6679, in ttest_ind
+    v1 = _var(a, axis, ddof=1, xp=xp)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1211, in _var
+    var = _moment(x, 2, axis, mean=mean, xp=xp)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1193, in _moment
+    a_zero_mean = _demean(a, mean, axis, xp=xp)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1132, in _demean
+    eps = xp.finfo(mean.dtype).eps * 10
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/numpy/core/getlimits.py", line 516, in __new__
+    raise ValueError("data type %r not inexact" % (dtype))
+ValueError: data type <class 'numpy.object_'> not inexact
+2025-07-29 16:56:56,064 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 16:57:10,292 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 16:57:10,292 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 16:57:12,777 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 16:57:12,778 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 16:57:12,890 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 16:57:12,891 - src.engine.core - ERROR - Daily analysis failed: data type <class 'numpy.object_'> not inexact
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 55, in run_daily_analysis
+    anomalies = self._detect_anomalies(data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 136, in _detect_anomalies
+    pattern_changes = self.anomaly_detector.detect_pattern_changes(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/anomaly.py", line 128, in detect_pattern_changes
+    t_stat, p_value = stats.ttest_ind(before, after)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/_lib/deprecation.py", line 234, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py", line 586, in axis_nan_policy_wrapper
+    res = hypotest_fun_out(*samples, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 6679, in ttest_ind
+    v1 = _var(a, axis, ddof=1, xp=xp)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1211, in _var
+    var = _moment(x, 2, axis, mean=mean, xp=xp)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1193, in _moment
+    a_zero_mean = _demean(a, mean, axis, xp=xp)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1132, in _demean
+    eps = xp.finfo(mean.dtype).eps * 10
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/numpy/core/getlimits.py", line 516, in __new__
+    raise ValueError("data type %r not inexact" % (dtype))
+ValueError: data type <class 'numpy.object_'> not inexact
+2025-07-29 16:57:12,895 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 16:57:12,930 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 16:57:12,930 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 16:57:15,461 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 16:57:15,462 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 16:57:15,569 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 16:57:15,570 - src.engine.core - ERROR - Daily analysis failed: data type <class 'numpy.object_'> not inexact
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 55, in run_daily_analysis
+    anomalies = self._detect_anomalies(data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 136, in _detect_anomalies
+    pattern_changes = self.anomaly_detector.detect_pattern_changes(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/anomaly.py", line 128, in detect_pattern_changes
+    t_stat, p_value = stats.ttest_ind(before, after)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/_lib/deprecation.py", line 234, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py", line 586, in axis_nan_policy_wrapper
+    res = hypotest_fun_out(*samples, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 6679, in ttest_ind
+    v1 = _var(a, axis, ddof=1, xp=xp)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1211, in _var
+    var = _moment(x, 2, axis, mean=mean, xp=xp)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1193, in _moment
+    a_zero_mean = _demean(a, mean, axis, xp=xp)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1132, in _demean
+    eps = xp.finfo(mean.dtype).eps * 10
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/numpy/core/getlimits.py", line 516, in __new__
+    raise ValueError("data type %r not inexact" % (dtype))
+ValueError: data type <class 'numpy.object_'> not inexact
+2025-07-29 16:57:15,571 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 17:00:50,694 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 17:00:50,695 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 17:00:55,566 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 17:00:55,566 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 17:00:55,671 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 17:00:55,672 - src.engine.core - ERROR - Daily analysis failed: data type <class 'numpy.object_'> not inexact
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 55, in run_daily_analysis
+    anomalies = self._detect_anomalies(data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 136, in _detect_anomalies
+    pattern_changes = self.anomaly_detector.detect_pattern_changes(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/anomaly.py", line 128, in detect_pattern_changes
+    t_stat, p_value = stats.ttest_ind(before, after)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/_lib/deprecation.py", line 234, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py", line 586, in axis_nan_policy_wrapper
+    res = hypotest_fun_out(*samples, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 6679, in ttest_ind
+    v1 = _var(a, axis, ddof=1, xp=xp)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1211, in _var
+    var = _moment(x, 2, axis, mean=mean, xp=xp)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1193, in _moment
+    a_zero_mean = _demean(a, mean, axis, xp=xp)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1132, in _demean
+    eps = xp.finfo(mean.dtype).eps * 10
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/numpy/core/getlimits.py", line 516, in __new__
+    raise ValueError("data type %r not inexact" % (dtype))
+ValueError: data type <class 'numpy.object_'> not inexact
+2025-07-29 17:01:06,568 - src.llm.agents - ERROR - Agent chat failed: "Input to ChatPromptTemplate is missing variables {'tools'}.  Expected: ['agent_scratchpad', 'chat_history', 'input', 'tools'] Received: ['input', 'chat_history', 'intermediate_steps', 'agent_scratchpad']\nNote: if you intended {tools} to be part of the string and not a variable, please escape it with double curly braces like: '{{tools}}'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT "
+2025-07-29 17:04:01,620 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 17:04:01,620 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 17:04:06,395 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 17:04:06,395 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 17:04:06,509 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 17:04:06,510 - src.engine.core - ERROR - Daily analysis failed: data type <class 'numpy.object_'> not inexact
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 55, in run_daily_analysis
+    anomalies = self._detect_anomalies(data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 136, in _detect_anomalies
+    pattern_changes = self.anomaly_detector.detect_pattern_changes(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/anomaly.py", line 128, in detect_pattern_changes
+    t_stat, p_value = stats.ttest_ind(before, after)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/_lib/deprecation.py", line 234, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py", line 586, in axis_nan_policy_wrapper
+    res = hypotest_fun_out(*samples, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 6679, in ttest_ind
+    v1 = _var(a, axis, ddof=1, xp=xp)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1211, in _var
+    var = _moment(x, 2, axis, mean=mean, xp=xp)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1193, in _moment
+    a_zero_mean = _demean(a, mean, axis, xp=xp)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1132, in _demean
+    eps = xp.finfo(mean.dtype).eps * 10
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/numpy/core/getlimits.py", line 516, in __new__
+    raise ValueError("data type %r not inexact" % (dtype))
+ValueError: data type <class 'numpy.object_'> not inexact
+2025-07-29 17:04:06,517 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 17:04:06,557 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 17:04:06,557 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 17:04:09,569 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 17:04:09,569 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 17:04:09,680 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 17:04:09,681 - src.engine.core - ERROR - Daily analysis failed: data type <class 'numpy.object_'> not inexact
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 55, in run_daily_analysis
+    anomalies = self._detect_anomalies(data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 136, in _detect_anomalies
+    pattern_changes = self.anomaly_detector.detect_pattern_changes(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/anomaly.py", line 128, in detect_pattern_changes
+    t_stat, p_value = stats.ttest_ind(before, after)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/_lib/deprecation.py", line 234, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_axis_nan_policy.py", line 586, in axis_nan_policy_wrapper
+    res = hypotest_fun_out(*samples, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 6679, in ttest_ind
+    v1 = _var(a, axis, ddof=1, xp=xp)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1211, in _var
+    var = _moment(x, 2, axis, mean=mean, xp=xp)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1193, in _moment
+    a_zero_mean = _demean(a, mean, axis, xp=xp)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/scipy/stats/_stats_py.py", line 1132, in _demean
+    eps = xp.finfo(mean.dtype).eps * 10
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/numpy/core/getlimits.py", line 516, in __new__
+    raise ValueError("data type %r not inexact" % (dtype))
+ValueError: data type <class 'numpy.object_'> not inexact
+2025-07-29 17:04:09,682 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 17:05:38,038 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 17:05:43,277 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-29 17:05:46,544 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:05:46,553 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 17:05:46,559 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:05:46,565 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 17:05:46,565 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 17:05:46,565 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 17:05:46,604 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 17:05:46,604 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 17:05:48,735 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 17:05:51,865 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 17:05:53,812 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 17:05:54,603 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 17:05:54,603 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 17:05:54,715 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 17:05:54,810 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-29 17:05:54,810 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-29 17:05:54,886 - src.engine.core - ERROR - Daily analysis failed: Found NaN in column 'y_ma'
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 59, in run_daily_analysis
+    predictions = self._run_predictions(data)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 150, in _run_predictions
+    sales_forecast = self.predictor.predict_with_prophet(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/predictive.py", line 53, in predict_with_prophet
+    model.fit(data)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/forecaster.py", line 1217, in fit
+    model_inputs = self.preprocess(df, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/forecaster.py", line 1135, in preprocess
+    self.history = self.setup_dataframe(history, initialize_scales=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/forecaster.py", line 303, in setup_dataframe
+    raise ValueError(
+ValueError: Found NaN in column 'y_ma'
+2025-07-29 17:05:54,888 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 17:05:54,924 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 17:05:54,924 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 17:05:57,597 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 17:05:57,597 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 17:05:57,709 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 17:05:57,864 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-29 17:05:57,864 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-29 17:05:57,888 - src.engine.core - ERROR - Daily analysis failed: Found NaN in column 'y_ma'
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 59, in run_daily_analysis
+    predictions = self._run_predictions(data)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 150, in _run_predictions
+    sales_forecast = self.predictor.predict_with_prophet(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/predictive.py", line 53, in predict_with_prophet
+    model.fit(data)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/forecaster.py", line 1217, in fit
+    model_inputs = self.preprocess(df, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/forecaster.py", line 1135, in preprocess
+    self.history = self.setup_dataframe(history, initialize_scales=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/forecaster.py", line 303, in setup_dataframe
+    raise ValueError(
+ValueError: Found NaN in column 'y_ma'
+2025-07-29 17:05:57,888 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 17:06:00,583 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 17:06:00,583 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 17:06:03,366 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 17:06:03,367 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 17:06:03,478 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 17:06:03,575 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-29 17:06:03,575 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-29 17:06:03,599 - src.engine.core - ERROR - Daily analysis failed: Found NaN in column 'y_ma'
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 59, in run_daily_analysis
+    predictions = self._run_predictions(data)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 150, in _run_predictions
+    sales_forecast = self.predictor.predict_with_prophet(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/predictive.py", line 53, in predict_with_prophet
+    model.fit(data)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/forecaster.py", line 1217, in fit
+    model_inputs = self.preprocess(df, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/forecaster.py", line 1135, in preprocess
+    self.history = self.setup_dataframe(history, initialize_scales=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/forecaster.py", line 303, in setup_dataframe
+    raise ValueError(
+ValueError: Found NaN in column 'y_ma'
+2025-07-29 17:06:26,731 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:06:26,739 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 17:06:26,746 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:06:26,752 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 17:06:26,752 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 17:06:26,752 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 17:06:33,565 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 17:06:33,565 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 17:06:35,287 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 17:06:39,001 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 17:06:41,131 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 17:06:41,945 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 17:06:41,946 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 17:06:42,058 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 17:06:42,154 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-29 17:06:42,154 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-29 17:06:42,229 - src.engine.core - ERROR - Daily analysis failed: Found NaN in column 'y_ma'
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 59, in run_daily_analysis
+    predictions = self._run_predictions(data)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 150, in _run_predictions
+    sales_forecast = self.predictor.predict_with_prophet(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/predictive.py", line 53, in predict_with_prophet
+    model.fit(data)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/forecaster.py", line 1217, in fit
+    model_inputs = self.preprocess(df, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/forecaster.py", line 1135, in preprocess
+    self.history = self.setup_dataframe(history, initialize_scales=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/forecaster.py", line 303, in setup_dataframe
+    raise ValueError(
+ValueError: Found NaN in column 'y_ma'
+2025-07-29 17:06:42,231 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 17:08:52,151 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 17:09:26,768 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-29 17:09:30,185 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:09:30,193 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 17:09:30,200 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:09:30,206 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 17:09:30,206 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 17:09:30,206 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 17:10:15,736 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 17:10:15,736 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 17:10:17,500 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 17:10:20,890 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 17:10:23,040 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 17:10:24,364 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 17:10:24,364 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 17:10:24,482 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 17:10:24,580 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-29 17:10:24,580 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-29 17:10:24,681 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/fxe3l0dp.json
+2025-07-29 17:10:24,685 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/gk35zr3v.json
+2025-07-29 17:10:24,685 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:10:24,685 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:10:24,685 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=98446', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/fxe3l0dp.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/gk35zr3v.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/prophet_modelnwe467y0/prophet_model-20250729171024.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:10:24,685 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:10:24,844 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:10:24,874 - prophet - INFO - Making 7 forecasts with cutoffs between 2025-06-10 00:00:00 and 2025-07-22 00:00:00
+2025-07-29 17:10:24,874 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-29 17:10:24,881 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/haustb7m.json
+2025-07-29 17:10:24,884 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/s8msje7s.json
+2025-07-29 17:10:24,885 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:10:24,885 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:10:24,885 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=3504', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/haustb7m.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/s8msje7s.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/prophet_model0zkjh7nh/prophet_model-20250729171024.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:10:24,885 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:10:24,907 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:10:24,931 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/v_r_ac5r.json
+2025-07-29 17:10:24,934 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/zfcd2lqp.json
+2025-07-29 17:10:24,934 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:10:24,934 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:10:24,934 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=61875', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/v_r_ac5r.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/zfcd2lqp.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/prophet_modelqbtwzrqx/prophet_model-20250729171024.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:10:24,934 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:10:24,951 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:10:25,077 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/94tfi2ek.json
+2025-07-29 17:10:25,080 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/qj203v5j.json
+2025-07-29 17:10:25,080 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:10:25,080 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:10:25,080 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=92852', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/94tfi2ek.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/qj203v5j.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/prophet_modelkulh6hdu/prophet_model-20250729171025.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:10:25,080 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:10:25,102 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:10:25,125 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/zh_w6tnl.json
+2025-07-29 17:10:25,128 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/ndc95z0f.json
+2025-07-29 17:10:25,128 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:10:25,128 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:10:25,128 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=82288', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/zh_w6tnl.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/ndc95z0f.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/prophet_model1bslioml/prophet_model-20250729171025.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:10:25,128 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:10:25,149 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:10:25,173 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/uk2n4c_1.json
+2025-07-29 17:10:25,177 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/jzfshftu.json
+2025-07-29 17:10:25,177 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:10:25,177 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:10:25,177 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=10214', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/uk2n4c_1.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/jzfshftu.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/prophet_modelqnurfgaf/prophet_model-20250729171025.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:10:25,177 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:10:25,198 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:10:25,223 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/tnhhfwss.json
+2025-07-29 17:10:25,227 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/2o0i674i.json
+2025-07-29 17:10:25,227 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:10:25,227 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:10:25,227 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=83534', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/tnhhfwss.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/2o0i674i.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/prophet_modeltvbrjz_3/prophet_model-20250729171025.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:10:25,227 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:10:25,251 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:10:25,274 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/14vtupc5.json
+2025-07-29 17:10:25,278 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/8ofb0r67.json
+2025-07-29 17:10:25,278 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:10:25,278 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:10:25,278 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=95194', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/14vtupc5.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/8ofb0r67.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpvdpkzpww/prophet_modelel2sqcdb/prophet_model-20250729171025.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:10:25,278 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:10:25,299 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:10:25,327 - src.analytics.predictive - INFO - Prophet CV MAPE: 720.44%
+2025-07-29 17:10:25,328 - src.analytics.predictive - INFO - Starting XGBoost demand prediction
+2025-07-29 17:10:25,423 - src.engine.core - ERROR - Daily analysis failed: All arrays must be of the same length
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 59, in run_daily_analysis
+    predictions = self._run_predictions(data)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 158, in _run_predictions
+    item_demand = self.predictor.predict_item_demand(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/analytics/predictive.py", line 144, in predict_item_demand
+    feature_importance = pd.DataFrame({
+                         ^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/frame.py", line 778, in __init__
+    mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/internals/construction.py", line 503, in dict_to_mgr
+    return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/internals/construction.py", line 114, in arrays_to_mgr
+    index = _extract_index(arrays)
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/internals/construction.py", line 677, in _extract_index
+    raise ValueError("All arrays must be of the same length")
+ValueError: All arrays must be of the same length
+2025-07-29 17:10:25,427 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 17:12:29,258 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 17:12:30,218 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-29 17:12:34,209 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:12:34,218 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 17:12:34,225 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:12:34,231 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 17:12:34,231 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 17:12:34,231 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 17:12:58,792 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 17:12:58,792 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 17:13:01,680 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 17:13:05,077 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 17:13:08,467 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 17:13:09,315 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 17:13:09,315 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 17:13:09,433 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 17:13:09,531 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-29 17:13:09,531 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-29 17:13:09,631 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/8wytqbn7.json
+2025-07-29 17:13:09,635 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/a1ypkfg1.json
+2025-07-29 17:13:09,636 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:13:09,636 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:13:09,636 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=93480', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/8wytqbn7.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/a1ypkfg1.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modeljd99e29m/prophet_model-20250729171309.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:13:09,636 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:13:09,671 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:13:09,700 - prophet - INFO - Making 7 forecasts with cutoffs between 2025-06-10 00:00:00 and 2025-07-22 00:00:00
+2025-07-29 17:13:09,700 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-29 17:13:09,707 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/uitefkbk.json
+2025-07-29 17:13:09,710 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/d11k8l5s.json
+2025-07-29 17:13:09,710 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:13:09,710 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:13:09,710 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=4267', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/uitefkbk.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/d11k8l5s.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model_ca1j0mi/prophet_model-20250729171309.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:13:09,710 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:13:09,733 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:13:09,757 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/kp_nhrt1.json
+2025-07-29 17:13:09,760 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/hi3xc7l0.json
+2025-07-29 17:13:09,761 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:13:09,761 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:13:09,761 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=41777', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/kp_nhrt1.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/hi3xc7l0.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model5h4ofv44/prophet_model-20250729171309.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:13:09,761 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:13:09,779 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:13:09,894 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/7vw9p7xt.json
+2025-07-29 17:13:09,897 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/przpcxtx.json
+2025-07-29 17:13:09,897 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:13:09,897 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:13:09,897 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=43255', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/7vw9p7xt.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/przpcxtx.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelvpslxi_8/prophet_model-20250729171309.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:13:09,897 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:13:09,919 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:13:09,943 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/7e4q97vj.json
+2025-07-29 17:13:09,946 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/pqdcu9y3.json
+2025-07-29 17:13:09,947 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:13:09,947 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:13:09,947 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=49724', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/7e4q97vj.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/pqdcu9y3.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modeljx_cv__1/prophet_model-20250729171309.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:13:09,947 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:13:09,968 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:13:09,993 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/l2v8kws9.json
+2025-07-29 17:13:09,997 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/_g4_ktub.json
+2025-07-29 17:13:09,997 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:13:09,997 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:13:09,997 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=28339', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/l2v8kws9.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/_g4_ktub.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelrrwa2h20/prophet_model-20250729171309.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:13:09,997 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:13:10,018 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:13:10,043 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/rjv4nn67.json
+2025-07-29 17:13:10,047 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/9nron5ow.json
+2025-07-29 17:13:10,047 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:13:10,047 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:13:10,047 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=57191', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/rjv4nn67.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/9nron5ow.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model4napf9gg/prophet_model-20250729171310.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:13:10,047 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:13:10,069 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:13:10,094 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/d76p4vxx.json
+2025-07-29 17:13:10,097 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/3ynn90x3.json
+2025-07-29 17:13:10,098 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:13:10,098 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:13:10,098 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=54561', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/d76p4vxx.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/3ynn90x3.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelexnh2a3t/prophet_model-20250729171310.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:13:10,098 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:13:10,119 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:13:10,147 - src.analytics.predictive - INFO - Prophet CV MAPE: 720.44%
+2025-07-29 17:13:10,147 - src.analytics.predictive - INFO - Starting XGBoost demand prediction
+2025-07-29 17:13:10,240 - src.engine.core - INFO - Step 4: Causal analysis
+2025-07-29 17:13:10,240 - src.engine.core - ERROR - Daily analysis failed: 'date'
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 63, in run_daily_analysis
+    causal_results = self._run_causal_analysis(data)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 174, in _run_causal_analysis
+    data['promotion_effectiveness']['date']
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/frame.py", line 4107, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'date'
+2025-07-29 17:13:10,245 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 17:15:33,017 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-29 17:15:33,070 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/8qahuuam.json
+2025-07-29 17:15:33,073 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/sgd1k_zo.json
+2025-07-29 17:15:33,073 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:15:33,073 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:15:33,073 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=15400', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/8qahuuam.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/sgd1k_zo.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelxe04isq6/prophet_model-20250729171533.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-29 17:15:33,073 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:15:33,788 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:15:33,812 - prophet - INFO - Making 3 forecasts with cutoffs between 2025-07-08 00:00:00 and 2025-07-22 00:00:00
+2025-07-29 17:15:33,812 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-29 17:15:33,818 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/9es6dxfa.json
+2025-07-29 17:15:33,820 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/e3_8moor.json
+2025-07-29 17:15:33,820 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:15:33,820 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:15:33,820 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=17443', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/9es6dxfa.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/e3_8moor.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model1lozwxi3/prophet_model-20250729171533.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-29 17:15:33,820 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:15:34,544 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:15:34,566 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/kr9l8y7e.json
+2025-07-29 17:15:34,568 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/k7t_vb2z.json
+2025-07-29 17:15:34,568 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:15:34,568 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:15:34,568 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=79740', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/kr9l8y7e.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/k7t_vb2z.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelavs77cpb/prophet_model-20250729171534.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-29 17:15:34,568 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:15:35,256 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:15:35,280 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/sat38nbg.json
+2025-07-29 17:15:35,282 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/r4ppq13v.json
+2025-07-29 17:15:35,282 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:15:35,282 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:15:35,282 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=76120', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/sat38nbg.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/r4ppq13v.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelyksrkyyf/prophet_model-20250729171535.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-29 17:15:35,283 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:15:36,028 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:15:36,057 - src.analytics.predictive - INFO - Prophet CV MAPE: 805.67%
+2025-07-29 17:15:36,057 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'missing', 'loc': ('response', 'model_performance'), 'msg': 'Field required', 'input': {'prediction_type': 'sales', 'periods': 7, 'predictions': [{'ds': Timestamp('2025-07-30 00:00:00'), 'yhat': -1468.6359114628715, 'yhat_lower': -2646.945543952162, 'yhat_upper': -253.10439538690417, 'trend': 1604.2473848446234, 'weekly': -1.114823418523713, 'yearly': -0.8006438126135306}, {'ds': Timestamp('2025-07-31 00:00:00'), 'yhat': 11371.03659349528, 'yhat_lower': 10088.287731512011, 'yhat_upper': 12632.095918866145, 'trend': 1605.653986756962, 'weekly': 6.688379999999999, 'yearly': -0.6065076369125693}, {'ds': Timestamp('2025-08-01 00:00:00'), 'yhat': -872.1544964337842, 'yhat_lower': -2177.6342488844625, 'yhat_upper': 328.6011940952903, 'trend': 1607.0605886693004, 'weekly': -1.1146365814955226, 'yearly': -0.4280651079012395}, {'ds': Timestamp('2025-08-02 00:00:00'), 'yhat': -620.7800447359326, 'yhat_lower': -1856.817013724948, 'yhat_upper': 561.7942113972528, 'trend': 1608.467190581639, 'weekly': -1.1147818431772405, 'yearly': -0.27116326553924613}, {'ds': Timestamp('2025-08-03 00:00:00'), 'yhat': -411.59581296715845, 'yhat_lower': -1629.8029533370004, 'yhat_upper': 922.6570794893859, 'trend': 1609.8737924939776, 'weekly': -1.1146884248041973, 'yearly': -0.1409811903458973}, {'ds': Timestamp('2025-08-04 00:00:00'), 'yhat': -252.37887721729305, 'yhat_lower': -1497.1528128202751, 'yhat_upper': 964.7040425037331, 'trend': 1611.2803944063162, 'weekly': -1.1147715751916776, 'yearly': -0.041860925329923714}, {'ds': Timestamp('2025-08-05 00:00:00'), 'yhat': -148.1132065096305, 'yhat_lower': -1303.8883306709968, 'yhat_upper': 1057.8505013048664, 'trend': 1612.6869963186546, 'weekly': -1.114678156814083, 'yearly': 0.022835656162850545}], 'confidence_intervals': {'lower': [-2646.945543952162, 10088.287731512011, -2177.6342488844625, -1856.817013724948, -1629.8029533370004, -1497.1528128202751, -1303.8883306709968], 'upper': [-253.10439538690417, 12632.095918866145, 328.6011940952903, 561.7942113972528, 922.6570794893859, 964.7040425037331, 1057.8505013048664]}}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'missing', 'loc': ('response', 'model_performance'), 'msg': 'Field required', 'input': {'prediction_type': 'sales', 'periods': 7, 'predictions': [{'ds': Timestamp('2025-07-30 00:00:00'), 'yhat': -1468.6359114628715, 'yhat_lower': -2646.945543952162, 'yhat_upper': -253.10439538690417, 'trend': 1604.2473848446234, 'weekly': -1.114823418523713, 'yearly': -0.8006438126135306}, {'ds': Timestamp('2025-07-31 00:00:00'), 'yhat': 11371.03659349528, 'yhat_lower': 10088.287731512011, 'yhat_upper': 12632.095918866145, 'trend': 1605.653986756962, 'weekly': 6.688379999999999, 'yearly': -0.6065076369125693}, {'ds': Timestamp('2025-08-01 00:00:00'), 'yhat': -872.1544964337842, 'yhat_lower': -2177.6342488844625, 'yhat_upper': 328.6011940952903, 'trend': 1607.0605886693004, 'weekly': -1.1146365814955226, 'yearly': -0.4280651079012395}, {'ds': Timestamp('2025-08-02 00:00:00'), 'yhat': -620.7800447359326, 'yhat_lower': -1856.817013724948, 'yhat_upper': 561.7942113972528, 'trend': 1608.467190581639, 'weekly': -1.1147818431772405, 'yearly': -0.27116326553924613}, {'ds': Timestamp('2025-08-03 00:00:00'), 'yhat': -411.59581296715845, 'yhat_lower': -1629.8029533370004, 'yhat_upper': 922.6570794893859, 'trend': 1609.8737924939776, 'weekly': -1.1146884248041973, 'yearly': -0.1409811903458973}, {'ds': Timestamp('2025-08-04 00:00:00'), 'yhat': -252.37887721729305, 'yhat_lower': -1497.1528128202751, 'yhat_upper': 964.7040425037331, 'trend': 1611.2803944063162, 'weekly': -1.1147715751916776, 'yearly': -0.041860925329923714}, {'ds': Timestamp('2025-08-05 00:00:00'), 'yhat': -148.1132065096305, 'yhat_lower': -1303.8883306709968, 'yhat_upper': 1057.8505013048664, 'trend': 1612.6869963186546, 'weekly': -1.114678156814083, 'yearly': 0.022835656162850545}], 'confidence_intervals': {'lower': [-2646.945543952162, 10088.287731512011, -2177.6342488844625, -1856.817013724948, -1629.8029533370004, -1497.1528128202751, -1303.8883306709968], 'upper': [-253.10439538690417, 12632.095918866145, 328.6011940952903, 561.7942113972528, 922.6570794893859, 964.7040425037331, 1057.8505013048664]}}}
+
+2025-07-29 17:15:46,971 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 17:15:46,971 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 17:15:50,879 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 17:15:50,880 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 17:15:50,989 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 17:15:51,085 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-29 17:15:51,085 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-29 17:15:51,115 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/4gzcyf3c.json
+2025-07-29 17:15:51,120 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/2ms8d977.json
+2025-07-29 17:15:51,120 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:15:51,120 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:15:51,120 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=687', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/4gzcyf3c.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/2ms8d977.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelh2yp3g50/prophet_model-20250729171551.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:15:51,120 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:15:51,156 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:15:51,185 - prophet - INFO - Making 7 forecasts with cutoffs between 2025-06-10 00:00:00 and 2025-07-22 00:00:00
+2025-07-29 17:15:51,185 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-29 17:15:51,192 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/ecv7tkp4.json
+2025-07-29 17:15:51,195 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/49824vi6.json
+2025-07-29 17:15:51,195 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:15:51,195 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:15:51,195 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=95624', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/ecv7tkp4.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/49824vi6.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelbxx8wcd2/prophet_model-20250729171551.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:15:51,195 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:15:51,217 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:15:51,241 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/6hulbxy6.json
+2025-07-29 17:15:51,244 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/psiktyb2.json
+2025-07-29 17:15:51,244 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:15:51,244 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:15:51,244 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=61761', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/6hulbxy6.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/psiktyb2.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelwhq7ush1/prophet_model-20250729171551.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:15:51,244 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:15:51,262 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:15:51,286 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/p06n8m40.json
+2025-07-29 17:15:51,289 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/w_i39fg5.json
+2025-07-29 17:15:51,289 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:15:51,289 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:15:51,289 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=15542', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/p06n8m40.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/w_i39fg5.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelrcko2ofn/prophet_model-20250729171551.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:15:51,289 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:15:51,308 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:15:51,332 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/c_1ou37b.json
+2025-07-29 17:15:51,335 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/kisi7waw.json
+2025-07-29 17:15:51,336 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:15:51,336 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:15:51,336 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=12377', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/c_1ou37b.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/kisi7waw.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelh0v58p07/prophet_model-20250729171551.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:15:51,336 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:15:51,356 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:15:51,380 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/tibtm5wm.json
+2025-07-29 17:15:51,383 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/antcpv0p.json
+2025-07-29 17:15:51,384 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:15:51,384 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:15:51,384 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=26940', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/tibtm5wm.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/antcpv0p.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model_7doxdsq/prophet_model-20250729171551.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:15:51,384 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:15:51,403 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:15:51,427 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/9g6mrq3i.json
+2025-07-29 17:15:51,431 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/5fnfy8db.json
+2025-07-29 17:15:51,432 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:15:51,432 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:15:51,432 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=34315', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/9g6mrq3i.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/5fnfy8db.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model0b7pm4dv/prophet_model-20250729171551.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:15:51,432 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:15:51,453 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:15:51,476 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/mx7t83zl.json
+2025-07-29 17:15:51,480 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/6zd0rtwa.json
+2025-07-29 17:15:51,480 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:15:51,480 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:15:51,480 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=34219', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/mx7t83zl.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/6zd0rtwa.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modela4dl3bwi/prophet_model-20250729171551.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:15:51,480 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:15:51,500 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:15:51,525 - src.analytics.predictive - INFO - Prophet CV MAPE: 720.44%
+2025-07-29 17:15:51,526 - src.analytics.predictive - INFO - Starting XGBoost demand prediction
+2025-07-29 17:15:51,619 - src.engine.core - INFO - Step 4: Causal analysis
+2025-07-29 17:15:51,620 - src.engine.core - ERROR - Daily analysis failed: 'date'
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 63, in run_daily_analysis
+    causal_results = self._run_causal_analysis(data)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 174, in _run_causal_analysis
+    data['promotion_effectiveness']['date']
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/frame.py", line 4107, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'date'
+2025-07-29 17:15:51,622 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 17:16:14,868 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 17:16:14,869 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 17:16:18,278 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 17:16:18,278 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 17:16:18,390 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 17:16:18,483 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-29 17:16:18,484 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-29 17:16:18,516 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/3mw9_5x9.json
+2025-07-29 17:16:18,520 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/iaaisy9h.json
+2025-07-29 17:16:18,520 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:18,520 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:18,520 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=62019', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/3mw9_5x9.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/iaaisy9h.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model4gu49nn3/prophet_model-20250729171618.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:18,520 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:18,557 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:18,585 - prophet - INFO - Making 7 forecasts with cutoffs between 2025-06-10 00:00:00 and 2025-07-22 00:00:00
+2025-07-29 17:16:18,585 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-29 17:16:18,593 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/tfbhiocx.json
+2025-07-29 17:16:18,595 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/7exjxgg0.json
+2025-07-29 17:16:18,596 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:18,596 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:18,596 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=97140', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/tfbhiocx.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/7exjxgg0.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modeljp9cvc_m/prophet_model-20250729171618.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:18,596 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:18,616 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:18,640 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/nvqupiy5.json
+2025-07-29 17:16:18,643 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/ae4br882.json
+2025-07-29 17:16:18,643 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:18,643 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:18,643 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=33558', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/nvqupiy5.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/ae4br882.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model64j8q8il/prophet_model-20250729171618.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:18,643 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:18,661 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:18,685 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/zre19vo_.json
+2025-07-29 17:16:18,688 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/gcxcbqp7.json
+2025-07-29 17:16:18,689 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:18,689 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:18,689 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=56423', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/zre19vo_.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/gcxcbqp7.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model3uz0wq4g/prophet_model-20250729171618.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:18,689 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:18,709 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:18,733 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/ti6atohr.json
+2025-07-29 17:16:18,736 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/nfpsjxkp.json
+2025-07-29 17:16:18,736 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:18,736 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:18,736 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=25429', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/ti6atohr.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/nfpsjxkp.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model5s3x0cj6/prophet_model-20250729171618.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:18,736 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:18,757 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:18,781 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/49tb5l60.json
+2025-07-29 17:16:18,784 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/rja0uy0c.json
+2025-07-29 17:16:18,785 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:18,785 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:18,785 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=94695', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/49tb5l60.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/rja0uy0c.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model0c4decg9/prophet_model-20250729171618.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:18,785 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:18,804 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:18,828 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/ibb55tyv.json
+2025-07-29 17:16:18,832 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/n1krbkju.json
+2025-07-29 17:16:18,832 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:18,832 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:18,832 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=10059', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/ibb55tyv.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/n1krbkju.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelgl1huw21/prophet_model-20250729171618.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:18,832 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:18,854 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:18,881 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/bfx8r2wp.json
+2025-07-29 17:16:18,885 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/8ojwyze5.json
+2025-07-29 17:16:18,885 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:18,885 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:18,885 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=65429', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/bfx8r2wp.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/8ojwyze5.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modeldciu5zn1/prophet_model-20250729171618.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:18,885 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:18,908 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:18,937 - src.analytics.predictive - INFO - Prophet CV MAPE: 720.44%
+2025-07-29 17:16:18,937 - src.analytics.predictive - INFO - Starting XGBoost demand prediction
+2025-07-29 17:16:19,032 - src.engine.core - INFO - Step 4: Causal analysis
+2025-07-29 17:16:19,033 - src.engine.core - ERROR - Daily analysis failed: 'date'
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 63, in run_daily_analysis
+    causal_results = self._run_causal_analysis(data)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 174, in _run_causal_analysis
+    data['promotion_effectiveness']['date']
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/frame.py", line 4107, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'date'
+2025-07-29 17:16:20,880 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 17:16:20,880 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 17:16:25,317 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 17:16:25,317 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 17:16:25,426 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 17:16:25,520 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-29 17:16:25,521 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-29 17:16:25,550 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/rh4blugg.json
+2025-07-29 17:16:25,554 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/m_focnhu.json
+2025-07-29 17:16:25,555 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:25,555 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:25,555 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=59438', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/rh4blugg.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/m_focnhu.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model9xdm2nwh/prophet_model-20250729171625.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:25,555 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:25,583 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:25,613 - prophet - INFO - Making 7 forecasts with cutoffs between 2025-06-10 00:00:00 and 2025-07-22 00:00:00
+2025-07-29 17:16:25,613 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-29 17:16:25,620 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/lvgt4lhy.json
+2025-07-29 17:16:25,623 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/5_wt7ssa.json
+2025-07-29 17:16:25,623 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:25,623 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:25,623 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=32664', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/lvgt4lhy.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/5_wt7ssa.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model4929vasg/prophet_model-20250729171625.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:25,623 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:25,645 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:25,670 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/yq_5mff2.json
+2025-07-29 17:16:25,673 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/eqm3n9r4.json
+2025-07-29 17:16:25,673 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:25,673 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:25,673 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=43544', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/yq_5mff2.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/eqm3n9r4.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelayfoj4nm/prophet_model-20250729171625.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:25,673 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:25,692 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:25,718 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/enejb5ge.json
+2025-07-29 17:16:25,721 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/_eey1_oo.json
+2025-07-29 17:16:25,721 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:25,721 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:25,721 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=27101', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/enejb5ge.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/_eey1_oo.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modela_3jlvja/prophet_model-20250729171625.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:25,721 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:25,741 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:25,766 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/qtvm7b2y.json
+2025-07-29 17:16:25,769 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/wloakt16.json
+2025-07-29 17:16:25,770 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:25,770 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:25,770 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=99450', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/qtvm7b2y.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/wloakt16.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modelvc1c45wa/prophet_model-20250729171625.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:25,770 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:25,794 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:25,819 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/zwy5bamx.json
+2025-07-29 17:16:25,822 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/j82tztal.json
+2025-07-29 17:16:25,822 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:25,822 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:25,822 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=41509', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/zwy5bamx.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/j82tztal.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model1vvqiwt6/prophet_model-20250729171625.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:25,822 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:25,842 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:25,865 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/xvpe5hi3.json
+2025-07-29 17:16:25,869 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/d7m5q8a2.json
+2025-07-29 17:16:25,869 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:25,869 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:25,869 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=98073', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/xvpe5hi3.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/d7m5q8a2.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_model7wvb105p/prophet_model-20250729171625.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:25,869 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:25,890 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:25,914 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/k_qs6ab6.json
+2025-07-29 17:16:25,918 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/y07_s9m2.json
+2025-07-29 17:16:25,918 - cmdstanpy - DEBUG - idx 0
+2025-07-29 17:16:25,918 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 17:16:25,918 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=9742', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/k_qs6ab6.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/y07_s9m2.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpc9y5qv5d/prophet_modeld7uxnaek/prophet_model-20250729171625.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 17:16:25,919 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 17:16:25,938 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 17:16:25,964 - src.analytics.predictive - INFO - Prophet CV MAPE: 720.44%
+2025-07-29 17:16:25,964 - src.analytics.predictive - INFO - Starting XGBoost demand prediction
+2025-07-29 17:16:26,055 - src.engine.core - INFO - Step 4: Causal analysis
+2025-07-29 17:16:26,055 - src.engine.core - ERROR - Daily analysis failed: 'date'
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 63, in run_daily_analysis
+    causal_results = self._run_causal_analysis(data)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 174, in _run_causal_analysis
+    data['promotion_effectiveness']['date']
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/frame.py", line 4107, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'date'
+2025-07-29 17:16:36,332 - src.llm.agents - ERROR - Agent chat failed: "Input to ChatPromptTemplate is missing variables {'tools'}.  Expected: ['agent_scratchpad', 'chat_history', 'input', 'tools'] Received: ['input', 'chat_history', 'intermediate_steps', 'agent_scratchpad']\nNote: if you intended {tools} to be part of the string and not a variable, please escape it with double curly braces like: '{{tools}}'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT "
+2025-07-29 17:16:54,583 - src.llm.agents - ERROR - Agent chat failed: "Input to ChatPromptTemplate is missing variables {'tools'}.  Expected: ['agent_scratchpad', 'chat_history', 'input', 'tools'] Received: ['input', 'chat_history', 'intermediate_steps', 'agent_scratchpad']\nNote: if you intended {tools} to be part of the string and not a variable, please escape it with double curly braces like: '{{tools}}'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT "
+2025-07-29 17:19:48,385 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 17:20:34,236 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-29 17:20:37,510 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:20:37,518 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 17:20:37,526 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:20:37,531 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 17:20:37,531 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 17:20:37,531 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 17:20:41,978 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-29 17:21:37,541 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-29 17:21:40,766 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:21:40,775 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 17:21:40,782 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 17:21:40,787 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 17:21:40,788 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 17:21:40,788 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 18:00:00,318 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 18:00:00,329 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 18:00:00,336 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 18:00:00,345 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 18:00:00,346 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 18:00:00,346 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 18:00:06,008 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 18:00:06,009 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 18:00:07,701 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 18:00:11,058 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 18:00:13,229 - src.data.connectors - INFO - Connected to ClickHouse: clickhouse-0-0.umetea.net:443
+2025-07-29 18:00:14,004 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-29 18:00:14,004 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-29 18:00:14,123 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-29 18:00:14,222 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-29 18:00:14,222 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-29 18:00:14,320 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/l51sn3y4.json
+2025-07-29 18:00:14,324 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/r1nfk62z.json
+2025-07-29 18:00:14,324 - cmdstanpy - DEBUG - idx 0
+2025-07-29 18:00:14,324 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 18:00:14,325 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=35006', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/l51sn3y4.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/r1nfk62z.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/prophet_model1waa2uct/prophet_model-20250729180014.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 18:00:14,325 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 18:00:14,484 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 18:00:14,515 - prophet - INFO - Making 7 forecasts with cutoffs between 2025-06-10 00:00:00 and 2025-07-22 00:00:00
+2025-07-29 18:00:14,516 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-29 18:00:14,523 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/k7_9y2g1.json
+2025-07-29 18:00:14,526 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/g74ckjkq.json
+2025-07-29 18:00:14,527 - cmdstanpy - DEBUG - idx 0
+2025-07-29 18:00:14,527 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 18:00:14,527 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=8166', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/k7_9y2g1.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/g74ckjkq.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/prophet_modelhss68bd_/prophet_model-20250729180014.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 18:00:14,527 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 18:00:14,549 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 18:00:14,573 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/wwa7e01h.json
+2025-07-29 18:00:14,576 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/im3z1oe_.json
+2025-07-29 18:00:14,577 - cmdstanpy - DEBUG - idx 0
+2025-07-29 18:00:14,577 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 18:00:14,577 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=5259', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/wwa7e01h.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/im3z1oe_.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/prophet_modelnahjptbf/prophet_model-20250729180014.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 18:00:14,577 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 18:00:14,595 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 18:00:14,619 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/pp2bpebu.json
+2025-07-29 18:00:14,622 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/6d7_g19_.json
+2025-07-29 18:00:14,622 - cmdstanpy - DEBUG - idx 0
+2025-07-29 18:00:14,622 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 18:00:14,622 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=71322', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/pp2bpebu.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/6d7_g19_.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/prophet_model_ox8dc5p/prophet_model-20250729180014.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 18:00:14,623 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 18:00:14,642 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 18:00:14,669 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/8a6ecbpc.json
+2025-07-29 18:00:14,673 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/7gf5oypb.json
+2025-07-29 18:00:14,673 - cmdstanpy - DEBUG - idx 0
+2025-07-29 18:00:14,673 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 18:00:14,673 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=57630', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/8a6ecbpc.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/7gf5oypb.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/prophet_modeln2uh3b4p/prophet_model-20250729180014.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 18:00:14,673 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 18:00:14,694 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 18:00:14,720 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/12gmpu5v.json
+2025-07-29 18:00:14,724 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/ihl3t61h.json
+2025-07-29 18:00:14,724 - cmdstanpy - DEBUG - idx 0
+2025-07-29 18:00:14,724 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 18:00:14,724 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=62695', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/12gmpu5v.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/ihl3t61h.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/prophet_modelrs0uyll4/prophet_model-20250729180014.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 18:00:14,724 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 18:00:14,745 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 18:00:14,769 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/9u11h72q.json
+2025-07-29 18:00:14,773 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/31jwnpyr.json
+2025-07-29 18:00:14,774 - cmdstanpy - DEBUG - idx 0
+2025-07-29 18:00:14,774 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 18:00:14,774 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=86684', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/9u11h72q.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/31jwnpyr.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/prophet_model2qitj0b2/prophet_model-20250729180014.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 18:00:14,774 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 18:00:14,794 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 18:00:14,818 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/w26ropdv.json
+2025-07-29 18:00:14,822 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/kj0jr4a0.json
+2025-07-29 18:00:14,822 - cmdstanpy - DEBUG - idx 0
+2025-07-29 18:00:14,823 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 18:00:14,823 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=73044', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/w26ropdv.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/kj0jr4a0.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/prophet_model7z8uthp0/prophet_model-20250729180014.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-29 18:00:14,823 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 18:00:14,842 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 18:00:14,870 - src.analytics.predictive - INFO - Prophet CV MAPE: 720.44%
+2025-07-29 18:00:14,871 - src.analytics.predictive - INFO - Starting XGBoost demand prediction
+2025-07-29 18:00:14,966 - src.engine.core - INFO - Step 4: Causal analysis
+2025-07-29 18:00:14,966 - src.engine.core - ERROR - Daily analysis failed: 'date'
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'date'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 63, in run_daily_analysis
+    causal_results = self._run_causal_analysis(data)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 174, in _run_causal_analysis
+    data['promotion_effectiveness']['date']
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/frame.py", line 4107, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'date'
+2025-07-29 18:00:14,970 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 18:00:19,829 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-29 18:00:19,876 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/3b2gwzbh.json
+2025-07-29 18:00:19,879 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/0z01g0cr.json
+2025-07-29 18:00:19,880 - cmdstanpy - DEBUG - idx 0
+2025-07-29 18:00:19,880 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 18:00:19,880 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=62671', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/3b2gwzbh.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/0z01g0cr.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/prophet_modeloucsepqd/prophet_model-20250729180019.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-29 18:00:19,880 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 18:00:20,606 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 18:00:20,630 - prophet - INFO - Making 3 forecasts with cutoffs between 2025-07-08 00:00:00 and 2025-07-22 00:00:00
+2025-07-29 18:00:20,630 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-29 18:00:20,737 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/j9rh4ovy.json
+2025-07-29 18:00:20,740 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/kk1vx8ec.json
+2025-07-29 18:00:20,740 - cmdstanpy - DEBUG - idx 0
+2025-07-29 18:00:20,740 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 18:00:20,740 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=56299', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/j9rh4ovy.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/kk1vx8ec.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/prophet_modelatrj9mlh/prophet_model-20250729180020.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-29 18:00:20,740 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 18:00:21,470 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 18:00:21,494 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/cda7ckfx.json
+2025-07-29 18:00:21,496 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/t05tptl6.json
+2025-07-29 18:00:21,496 - cmdstanpy - DEBUG - idx 0
+2025-07-29 18:00:21,496 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 18:00:21,496 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=52042', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/cda7ckfx.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/t05tptl6.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/prophet_modeloe2zvk66/prophet_model-20250729180021.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-29 18:00:21,496 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 18:00:22,182 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 18:00:22,205 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/dg1tqrgr.json
+2025-07-29 18:00:22,207 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/oskky0vk.json
+2025-07-29 18:00:22,208 - cmdstanpy - DEBUG - idx 0
+2025-07-29 18:00:22,208 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-29 18:00:22,208 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=69481', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/dg1tqrgr.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/oskky0vk.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp6hmrp8e4/prophet_model__pc2pv0/prophet_model-20250729180022.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-29 18:00:22,208 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-29 18:00:22,949 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-29 18:00:22,974 - src.analytics.predictive - INFO - Prophet CV MAPE: 805.67%
+2025-07-29 18:00:22,975 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'missing', 'loc': ('response', 'model_performance'), 'msg': 'Field required', 'input': {'prediction_type': 'sales', 'periods': 7, 'predictions': [{'ds': Timestamp('2025-07-30 00:00:00'), 'yhat': -1468.6359114628715, 'yhat_lower': -2698.76792936799, 'yhat_upper': -206.47084451496164, 'trend': 1604.2473848446234, 'weekly': -1.114823418523713, 'yearly': -0.8006438126135306}, {'ds': Timestamp('2025-07-31 00:00:00'), 'yhat': 11371.03659349528, 'yhat_lower': 10144.890789084599, 'yhat_upper': 12606.65558478109, 'trend': 1605.653986756962, 'weekly': 6.688379999999999, 'yearly': -0.6065076369125693}, {'ds': Timestamp('2025-08-01 00:00:00'), 'yhat': -872.1544964337842, 'yhat_lower': -2163.6770825183853, 'yhat_upper': 306.6407316648147, 'trend': 1607.0605886693004, 'weekly': -1.1146365814955226, 'yearly': -0.4280651079012395}, {'ds': Timestamp('2025-08-02 00:00:00'), 'yhat': -620.7800447359326, 'yhat_lower': -1907.8743902230565, 'yhat_upper': 597.0105272175454, 'trend': 1608.467190581639, 'weekly': -1.1147818431772405, 'yearly': -0.27116326553924613}, {'ds': Timestamp('2025-08-03 00:00:00'), 'yhat': -411.59581296715845, 'yhat_lower': -1624.9767184204843, 'yhat_upper': 813.9164251933889, 'trend': 1609.8737924939776, 'weekly': -1.1146884248041973, 'yearly': -0.1409811903458973}, {'ds': Timestamp('2025-08-04 00:00:00'), 'yhat': -252.37887721729305, 'yhat_lower': -1501.094794101926, 'yhat_upper': 1013.7524049301958, 'trend': 1611.2803944063162, 'weekly': -1.1147715751916776, 'yearly': -0.041860925329923714}, {'ds': Timestamp('2025-08-05 00:00:00'), 'yhat': -148.1132065096305, 'yhat_lower': -1273.7919914718782, 'yhat_upper': 1151.4544312001328, 'trend': 1612.6869963186546, 'weekly': -1.114678156814083, 'yearly': 0.022835656162850545}], 'confidence_intervals': {'lower': [-2698.76792936799, 10144.890789084599, -2163.6770825183853, -1907.8743902230565, -1624.9767184204843, -1501.094794101926, -1273.7919914718782], 'upper': [-206.47084451496164, 12606.65558478109, 306.6407316648147, 597.0105272175454, 813.9164251933889, 1013.7524049301958, 1151.4544312001328]}}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'missing', 'loc': ('response', 'model_performance'), 'msg': 'Field required', 'input': {'prediction_type': 'sales', 'periods': 7, 'predictions': [{'ds': Timestamp('2025-07-30 00:00:00'), 'yhat': -1468.6359114628715, 'yhat_lower': -2698.76792936799, 'yhat_upper': -206.47084451496164, 'trend': 1604.2473848446234, 'weekly': -1.114823418523713, 'yearly': -0.8006438126135306}, {'ds': Timestamp('2025-07-31 00:00:00'), 'yhat': 11371.03659349528, 'yhat_lower': 10144.890789084599, 'yhat_upper': 12606.65558478109, 'trend': 1605.653986756962, 'weekly': 6.688379999999999, 'yearly': -0.6065076369125693}, {'ds': Timestamp('2025-08-01 00:00:00'), 'yhat': -872.1544964337842, 'yhat_lower': -2163.6770825183853, 'yhat_upper': 306.6407316648147, 'trend': 1607.0605886693004, 'weekly': -1.1146365814955226, 'yearly': -0.4280651079012395}, {'ds': Timestamp('2025-08-02 00:00:00'), 'yhat': -620.7800447359326, 'yhat_lower': -1907.8743902230565, 'yhat_upper': 597.0105272175454, 'trend': 1608.467190581639, 'weekly': -1.1147818431772405, 'yearly': -0.27116326553924613}, {'ds': Timestamp('2025-08-03 00:00:00'), 'yhat': -411.59581296715845, 'yhat_lower': -1624.9767184204843, 'yhat_upper': 813.9164251933889, 'trend': 1609.8737924939776, 'weekly': -1.1146884248041973, 'yearly': -0.1409811903458973}, {'ds': Timestamp('2025-08-04 00:00:00'), 'yhat': -252.37887721729305, 'yhat_lower': -1501.094794101926, 'yhat_upper': 1013.7524049301958, 'trend': 1611.2803944063162, 'weekly': -1.1147715751916776, 'yearly': -0.041860925329923714}, {'ds': Timestamp('2025-08-05 00:00:00'), 'yhat': -148.1132065096305, 'yhat_lower': -1273.7919914718782, 'yhat_upper': 1151.4544312001328, 'trend': 1612.6869963186546, 'weekly': -1.114678156814083, 'yearly': 0.022835656162850545}], 'confidence_intervals': {'lower': [-2698.76792936799, 10144.890789084599, -2163.6770825183853, -1907.8743902230565, -1624.9767184204843, -1501.094794101926, -1273.7919914718782], 'upper': [-206.47084451496164, 12606.65558478109, 306.6407316648147, 597.0105272175454, 813.9164251933889, 1013.7524049301958, 1151.4544312001328]}}}
+
+2025-07-29 18:00:32,079 - src.llm.agents - ERROR - Agent chat failed: "Input to ChatPromptTemplate is missing variables {'tools'}.  Expected: ['agent_scratchpad', 'chat_history', 'input', 'tools'] Received: ['input', 'chat_history', 'intermediate_steps', 'agent_scratchpad']\nNote: if you intended {tools} to be part of the string and not a variable, please escape it with double curly braces like: '{{tools}}'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT "

@@ -4,17 +4,18 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from contextlib import asynccontextmanager
 import uvicorn
-
+from .dependencies import set_engine, get_engine
 from config.settings import get_settings
 from ..engine.core import AIGrowthEngineCore
 from ..engine.scheduler import TaskScheduler
-# from .routes import router
+from .routes import router
 from .schemas import HealthResponse
 
 logger = logging.getLogger(__name__)
 
 # 全局引擎实例
-engine = None
+engine = AIGrowthEngineCore()
+set_engine(engine)
 scheduler = None
 
 
@@ -60,7 +61,7 @@ app.add_middleware(
 )
 
 # 添加路由
-# app.include_router(router, prefix="/api/v1")
+app.include_router(router, prefix="/api/v1")
 
 
 # 全局异常处理

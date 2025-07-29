@@ -26,7 +26,7 @@ class OrderRepository(BaseRepository):
             location_id: Optional[str] = None
     ) -> List[OrderItem]:
         """获取订单商品数据"""
-        query = """
+        query = f"""
         SELECT 
             order_id,
             order_item_variation_id,
@@ -45,8 +45,8 @@ class OrderRepository(BaseRepository):
             created_at_pt,
             campaign_names
         FROM dw.fact_order_item_variations
-        WHERE created_at_pt >= %(start_date)s
-            AND created_at_pt < %(end_date)s
+        WHERE created_at_pt >= '{start_date}'
+            AND created_at_pt < '{end_date}'
             AND pay_status = 'COMPLETED'
         """
 
@@ -56,7 +56,7 @@ class OrderRepository(BaseRepository):
         }
 
         if location_id:
-            query += " AND location_id = %(location_id)s"
+            query += f" AND location_id = '{location_id}'"
             params['location_id'] = location_id
 
         query += " ORDER BY created_at_pt DESC"
@@ -77,7 +77,7 @@ class OrderRepository(BaseRepository):
             location_id: Optional[str] = None
     ) -> pd.DataFrame:
         """获取每日销售汇总"""
-        query = """
+        query = f"""
         SELECT 
             toDate(created_at_pt) as date,
             location_id,
@@ -88,8 +88,8 @@ class OrderRepository(BaseRepository):
             COUNT(DISTINCT CASE WHEN has(is_new_users, 1) THEN customer_id END) as new_customer_count,
             COUNT(DISTINCT customer_id) - COUNT(DISTINCT CASE WHEN has(is_new_users, 1) THEN customer_id END) as repeat_customer_count
         FROM dw.fact_order_item_variations
-        WHERE created_at_pt >= %(start_date)s
-            AND created_at_pt < %(end_date)s
+        WHERE created_at_pt >= '{start_date}'
+            AND created_at_pt < '{end_date}'
             AND pay_status = 'COMPLETED'
         """
 
@@ -99,7 +99,7 @@ class OrderRepository(BaseRepository):
         }
 
         if location_id:
-            query += " AND location_id = %(location_id)s"
+            query += f" AND location_id = '{location_id}'"
             params['location_id'] = location_id
 
         query += " GROUP BY date, location_id ORDER BY date DESC"
@@ -112,7 +112,7 @@ class OrderRepository(BaseRepository):
             top_n: Optional[int] = None
     ) -> pd.DataFrame:
         """获取商品销售表现"""
-        query = """
+        query = f"""
         SELECT 
             item_id,
             item_name,
@@ -124,7 +124,7 @@ class OrderRepository(BaseRepository):
             SUM(item_discount) as total_discount,
             COUNT(DISTINCT customer_id) as unique_buyers
         FROM dw.fact_order_item_variations
-        WHERE created_at_pt >= today() - %(days)s
+        WHERE created_at_pt >= today() - {days}
             AND pay_status = 'COMPLETED'
             AND item_name IS NOT NULL
         GROUP BY item_id, item_name, category_name
@@ -142,10 +142,10 @@ class CustomerRepository(BaseRepository):
 
     def get_customer_profile(self, customer_id: str) -> Optional[Customer]:
         """获取单个客户画像"""
-        query = """
+        query = f"""
         SELECT *
         FROM ads.customer_profile
-        WHERE customer_id = %(customer_id)s
+        WHERE customer_id = '{customer_id}'
         """
 
         df = self.db.execute_df(query, {'customer_id': customer_id})
@@ -179,7 +179,7 @@ class CustomerRepository(BaseRepository):
 
     def get_churned_customers(self, days_threshold: int = 30) -> pd.DataFrame:
         """获取流失客户名单"""
-        query = """
+        query = f"""
         WITH customer_last_order AS (
             SELECT 
                 customer_id,
@@ -194,7 +194,7 @@ class CustomerRepository(BaseRepository):
             dateDiff('day', clo.last_order_date, today()) as days_since_last_order
         FROM ads.customer_profile cp
         JOIN customer_last_order clo ON cp.customer_id = clo.customer_id
-        WHERE dateDiff('day', clo.last_order_date, today()) > %(days_threshold)s
+        WHERE dateDiff('day', clo.last_order_date, today()) > {days_threshold}
             AND cp.order_final_total_cnt > 3  -- 曾经的活跃客户
         ORDER BY cp.order_final_total_amt DESC
         """
@@ -207,7 +207,7 @@ class AnalyticsRepository(BaseRepository):
 
     def get_time_series_data(self, days: int = 90) -> pd.DataFrame:
         """获取时间序列数据用于预测"""
-        query = """
+        query = f"""
         SELECT 
             toDate(created_at_pt) as ds,  -- Prophet需要的列名
             SUM(item_total_amt) as y,      -- Prophet需要的列名
@@ -216,7 +216,7 @@ class AnalyticsRepository(BaseRepository):
             AVG(item_total_amt) as avg_order_value,
             SUM(CASE WHEN has(is_new_users, 1) THEN 1 ELSE 0 END) as new_customers
         FROM dw.fact_order_item_variations
-        WHERE created_at_pt >= today() - %(days)s
+        WHERE created_at_pt >= today() - {days}
             AND pay_status = 'COMPLETED'
         GROUP BY ds
         ORDER BY ds
@@ -226,7 +226,7 @@ class AnalyticsRepository(BaseRepository):
 
     def get_promotion_effectiveness(self, days: int = 30) -> pd.DataFrame:
         """获取促销效果数据"""
-        query = """
+        query = f"""
         WITH promotion_orders AS (
             SELECT 
                 toDate(created_at_pt) as date,
@@ -236,7 +236,7 @@ class AnalyticsRepository(BaseRepository):
                 item_discount,
                 customer_id
             FROM dw.fact_order_item_variations
-            WHERE created_at_pt >= today() - %(days)s
+            WHERE created_at_pt >= today() - {days}
                 AND pay_status = 'COMPLETED'
                 AND length(campaign_names) > 0
         )

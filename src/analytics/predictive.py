@@ -49,6 +49,7 @@ class SalesPredictorEngine:
         for regressor in extra_regressors:
             model.add_regressor(regressor)
 
+        data = data.dropna()
         # 训练模型
         model.fit(data)
 
@@ -140,10 +141,12 @@ class SalesPredictorEngine:
         rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 
         # 特征重要性
-        feature_importance = pd.DataFrame({
-            'feature': feature_cols,
-            'importance': model.feature_importances_
-        }).sort_values('importance', ascending=False)
+        feature_importance = pd.DataFrame(list(zip(feature_cols, model.feature_importances_)), columns=["feature", "importance"]).sort_values('importance', ascending=False)
+
+        # feature_importance = pd.DataFrame({
+        #     'feature': feature_cols,
+        #     'importance': model.feature_importances_
+        # }).sort_values('importance', ascending=False)
 
         self.models['xgboost_demand'] = model
         self.feature_importance['demand'] = feature_importance
