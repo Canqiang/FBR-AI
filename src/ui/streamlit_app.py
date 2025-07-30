@@ -121,7 +121,7 @@ class AIGrowthEngineUI:
             with col1:
                 MetricsCard(
                     "今日营收",
-                    f"¥{metrics.get('revenue', 0):,.0f}",
+                    f"${metrics.get('revenue', 0):,.0f}",
                     f"{metrics.get('revenue_change', 0):+.1f}%"
                 )
 
@@ -142,7 +142,7 @@ class AIGrowthEngineUI:
             with col4:
                 MetricsCard(
                     "客单价",
-                    f"¥{metrics.get('avg_order_value', 0):.0f}",
+                    f"${metrics.get('avg_order_value', 0):.0f}",
                     "稳定"
                 )
 

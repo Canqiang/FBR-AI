@@ -3810,3 +3810,631 @@ AttributeError: 'AzureOpenAIClient' object has no attribute 'client'
     For further information visit https://errors.pydantic.dev/2.11/v/value_error
 2025-07-30 11:22:44,464 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
 2025-07-30 11:22:44,468 - src.engine.core - INFO - Daily analysis completed in 11.39 seconds
+2025-07-30 11:22:56,772 - src.llm.agents - INFO - Agent chat query: 为什么最近销量下降？
+2025-07-30 11:22:58,313 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:22:58,865 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:22:59,402 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:22:59,402 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:22:59,402 - src.data.connectors - ERROR - Failed to convert to DataFrame: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:23:00,194 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:23:15,060 - src.llm.agents - INFO - Agent chat query: 哪些商品需要补货？
+2025-07-30 11:23:17,299 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:23:17,370 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:23:18,402 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:23:22,175 - src.llm.agents - INFO - Agent chat query: 明天需要注意什么？
+2025-07-30 11:23:23,237 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:23:23,250 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:23:23,252 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:23:23,712 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:23:24,260 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:23:24,261 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:23:24,261 - src.data.connectors - ERROR - Failed to convert to DataFrame: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:23:25,215 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:23:30,935 - src.llm.agents - INFO - Agent chat query: 哪些商品需要补货？
+2025-07-30 11:23:31,886 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:23:31,938 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:23:32,786 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:23:37,619 - src.llm.agents - INFO - Agent chat query: 为什么最近销量下降？
+2025-07-30 11:23:39,006 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:23:39,044 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:23:39,982 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:23:47,703 - src.data.mock_repository - INFO - Generating mock time series data for 90 days
+2025-07-30 11:23:47,708 - src.analytics.predictive - INFO - Starting Prophet prediction for 6 periods
+2025-07-30 11:23:47,752 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/btsq3rgk.json
+2025-07-30 11:23:47,756 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/nntvwmm4.json
+2025-07-30 11:23:47,756 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:23:47,756 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:23:47,756 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=21275', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/btsq3rgk.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/nntvwmm4.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/prophet_modelqx63boy1/prophet_model-20250730112347.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 11:23:47,756 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:23:47,878 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:23:47,900 - prophet - INFO - Making 3 forecasts with cutoffs between 2025-07-09 11:23:47.704258 and 2025-07-23 11:23:47.704258
+2025-07-30 11:23:47,900 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-30 11:23:47,908 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/u244xple.json
+2025-07-30 11:23:47,910 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/rtenq5f7.json
+2025-07-30 11:23:47,910 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:23:47,910 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:23:47,910 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=73113', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/u244xple.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/rtenq5f7.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/prophet_model0o5cnked/prophet_model-20250730112347.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 11:23:47,910 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:23:47,988 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:23:48,010 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/wa4kkpiq.json
+2025-07-30 11:23:48,012 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/7ssf0_zm.json
+2025-07-30 11:23:48,013 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:23:48,013 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:23:48,013 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=63597', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/wa4kkpiq.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/7ssf0_zm.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/prophet_model2pmue__i/prophet_model-20250730112348.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 11:23:48,013 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:23:48,198 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:23:48,221 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/p2597qpt.json
+2025-07-30 11:23:48,223 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/3ocb0k74.json
+2025-07-30 11:23:48,223 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:23:48,224 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:23:48,224 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=11662', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/p2597qpt.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/3ocb0k74.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpzfkmynjz/prophet_modelnryhjijm/prophet_model-20250730112348.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 11:23:48,224 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:23:48,440 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:23:48,465 - src.analytics.predictive - INFO - Prophet CV MAPE: 24.45%
+2025-07-30 11:24:43,580 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-30 11:25:21,106 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-30 11:25:24,172 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:25:24,637 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:25:24,638 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:25:24,638 - src.engine.core - WARNING - Failed to connect to database, using mock data: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:25:24,638 - src.data.mock_repository - INFO - Using mock order repository (no database connection)
+2025-07-30 11:25:25,087 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:25:25,543 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:25:25,543 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:25:25,543 - src.engine.core - WARNING - Failed to connect to database, using mock data: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:25:25,543 - src.data.mock_repository - INFO - Using mock customer repository (no database connection)
+2025-07-30 11:25:26,016 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:25:26,465 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:25:26,465 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:25:26,465 - src.engine.core - WARNING - Failed to connect to database, using mock data: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:25:26,465 - src.data.mock_repository - INFO - Using mock analytics repository (no database connection)
+2025-07-30 11:25:26,466 - src.api.app - INFO - Engine initialized successfully
+2025-07-30 11:25:26,472 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-30 11:25:26,473 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-30 11:25:26,473 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-30 11:25:26,473 - src.api.app - INFO - Scheduler started successfully
+2025-07-30 11:25:26,483 - src.api.routes - INFO - Running new daily analysis
+2025-07-30 11:25:26,483 - src.engine.core - INFO - Starting daily analysis
+2025-07-30 11:25:26,483 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-30 11:25:26,483 - src.data.mock_repository - INFO - Generating mock daily sales data from 2025-05-01 11:25:26.483885 to 2025-07-30 11:25:26.483885
+2025-07-30 11:25:26,486 - src.data.mock_repository - INFO - Generating mock item performance data for 30 days
+2025-07-30 11:25:26,487 - src.data.mock_repository - INFO - Generating mock customer segments data
+2025-07-30 11:25:26,487 - src.data.mock_repository - INFO - Generating mock time series data for 180 days
+2025-07-30 11:25:26,489 - src.data.mock_repository - INFO - Generating mock promotion effectiveness data for 30 days
+2025-07-30 11:25:26,490 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-30 11:25:26,490 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-30 11:25:26,551 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-30 11:25:26,644 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-30 11:25:26,644 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-30 11:25:26,720 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/y62a51zl.json
+2025-07-30 11:25:26,724 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/7r37ja7i.json
+2025-07-30 11:25:26,724 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:25:26,724 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:25:26,724 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=51726', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/y62a51zl.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/7r37ja7i.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/prophet_modelj7qzx97d/prophet_model-20250730112526.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:25:26,724 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:25:26,745 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:25:26,773 - prophet - INFO - Making 7 forecasts with cutoffs between 2025-06-11 11:25:26.487957 and 2025-07-23 11:25:26.487957
+2025-07-30 11:25:26,773 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-30 11:25:26,781 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/v5aj_bxi.json
+2025-07-30 11:25:26,784 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/qano840w.json
+2025-07-30 11:25:26,784 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:25:26,784 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:25:26,784 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=18552', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/v5aj_bxi.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/qano840w.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/prophet_modelc2lztkth/prophet_model-20250730112526.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:25:26,784 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:25:26,798 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:25:26,822 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/2zqwt6z4.json
+2025-07-30 11:25:26,824 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/sfqu1lgr.json
+2025-07-30 11:25:26,825 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:25:26,825 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:25:26,825 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=68840', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/2zqwt6z4.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/sfqu1lgr.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/prophet_modellisrv4ao/prophet_model-20250730112526.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:25:26,825 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:25:26,838 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:25:26,862 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/kzy22lui.json
+2025-07-30 11:25:26,865 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/fi6e75e2.json
+2025-07-30 11:25:26,865 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:25:26,865 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:25:26,865 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=39925', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/kzy22lui.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/fi6e75e2.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/prophet_modele3vyjv8v/prophet_model-20250730112526.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:25:26,866 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:25:26,880 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:25:26,905 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/ykhqa_uj.json
+2025-07-30 11:25:26,908 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/kzansmvb.json
+2025-07-30 11:25:26,908 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:25:26,909 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:25:26,909 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=91465', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/ykhqa_uj.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/kzansmvb.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/prophet_model4m3myplp/prophet_model-20250730112526.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:25:26,909 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:25:26,923 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:25:26,947 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/sk_u5yc9.json
+2025-07-30 11:25:26,950 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/ujj1fiqw.json
+2025-07-30 11:25:26,950 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:25:26,950 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:25:26,950 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=99865', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/sk_u5yc9.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/ujj1fiqw.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/prophet_modelo3kicwr7/prophet_model-20250730112526.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:25:26,951 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:25:26,967 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:25:26,991 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/kl8uey99.json
+2025-07-30 11:25:26,995 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/d1ea42sg.json
+2025-07-30 11:25:26,995 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:25:26,995 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:25:26,995 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=44518', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/kl8uey99.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/d1ea42sg.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/prophet_model0_35evu5/prophet_model-20250730112526.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:25:26,995 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:25:27,011 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:25:27,035 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/z4m0yv1e.json
+2025-07-30 11:25:27,039 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/3xrtp39y.json
+2025-07-30 11:25:27,039 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:25:27,039 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:25:27,039 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=77497', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/z4m0yv1e.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/3xrtp39y.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/prophet_modelq9jw8408/prophet_model-20250730112527.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:25:27,039 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:25:27,053 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:25:27,079 - src.analytics.predictive - INFO - Prophet CV MAPE: 4.68%
+2025-07-30 11:25:27,080 - src.analytics.predictive - INFO - Starting XGBoost demand prediction
+2025-07-30 11:25:27,163 - src.engine.core - INFO - Step 4: Causal analysis
+2025-07-30 11:25:27,164 - src.analytics.causal - INFO - Analyzing causal effect of has_promotion on revenue
+2025-07-30 11:25:27,175 - dowhy.causal_model - INFO - Model to find the causal effect of treatment ['has_promotion'] on outcome ['revenue']
+2025-07-30 11:25:27,175 - dowhy.causal_model - WARNING - There are an additional 10 variables in the dataset that are not in the graph. Variable names are: '['avg_order_value', 'customer_count', 'date', 'hour_of_day', 'location_id', 'location_name', 'new_customer_count', 'order_count', 'repeat_customer_count', 'total_revenue']'
+2025-07-30 11:25:27,176 - dowhy.causal_identifier.auto_identifier - INFO - Causal effect can be identified.
+2025-07-30 11:25:27,177 - dowhy.causal_identifier.auto_identifier - INFO - Instrumental variables for treatment and outcome:[]
+2025-07-30 11:25:27,177 - dowhy.causal_identifier.auto_identifier - INFO - Frontdoor variables for treatment and outcome:[]
+2025-07-30 11:25:27,177 - dowhy.causal_identifier.auto_identifier - INFO - Number of general adjustment sets found: 1
+2025-07-30 11:25:27,177 - dowhy.causal_identifier.auto_identifier - INFO - Causal effect can be identified.
+2025-07-30 11:25:27,178 - dowhy.causal_model - INFO - propensity_score_matching
+2025-07-30 11:25:27,178 - dowhy.causal_estimator - INFO - INFO: Using Propensity Score Matching Estimator
+2025-07-30 11:25:27,179 - src.analytics.causal - WARNING - PSM estimation failed: This solver needs samples of at least 2 classes in the data, but the data contains only one class: 0
+2025-07-30 11:25:27,179 - dowhy.causal_model - INFO - propensity_score_weighting
+2025-07-30 11:25:27,180 - dowhy.causal_estimator - INFO - INFO: Using Propensity Score Weighting Estimator
+2025-07-30 11:25:27,180 - src.analytics.causal - WARNING - IPW estimation failed: This solver needs samples of at least 2 classes in the data, but the data contains only one class: 0
+2025-07-30 11:25:27,180 - dowhy.causal_model - INFO - linear_regression
+2025-07-30 11:25:27,180 - dowhy.causal_estimator - INFO - INFO: Using Linear Regression Estimator
+2025-07-30 11:25:27,180 - dowhy.causal_estimator - INFO - b: revenue~has_promotion+is_weekend
+2025-07-30 11:25:27,185 - src.analytics.causal - WARNING - Placebo test failed: CausalModel.refute_estimate() missing 1 required positional argument: 'estimate'
+2025-07-30 11:25:27,185 - src.analytics.causal - WARNING - Random common cause test failed: CausalModel.refute_estimate() missing 1 required positional argument: 'estimate'
+2025-07-30 11:25:27,185 - src.engine.core - INFO - Step 5: Generating optimizations
+2025-07-30 11:25:27,186 - src.analytics.optimization - INFO - Optimizing pricing strategy
+2025-07-30 11:25:27,187 - src.engine.core - ERROR - Failed to generate pricing optimization: 'item_total_amt'
+2025-07-30 11:25:27,187 - src.engine.core - INFO - Step 6: Generating AI insights
+2025-07-30 11:25:27,647 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-30 11:25:32,866 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:25:32,878 - src.engine.core - ERROR - Failed to generate problem diagnosis: 1 validation error for SequentialChain
+  Value error, Missing required input keys: {'format_instructions'}, only had {'historical_context', 'decline_analysis', 'factors', 'decline_pct', 'period'} [type=value_error, input_value={'chains': [LLMChain(verb...ions'], 'verbose': True}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-07-30 11:25:39,766 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:25:39,769 - src.engine.core - INFO - Daily analysis completed in 13.29 seconds
+2025-07-30 11:25:39,845 - src.data.mock_repository - INFO - Generating mock item performance data for 30 days
+2025-07-30 11:25:39,856 - src.data.mock_repository - INFO - Generating mock customer segments data
+2025-07-30 11:26:06,411 - src.data.mock_repository - INFO - Generating mock time series data for 90 days
+2025-07-30 11:26:06,422 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-30 11:26:06,473 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/40vgn0z5.json
+2025-07-30 11:26:06,476 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/kl6gjpyd.json
+2025-07-30 11:26:06,477 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:26:06,477 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:26:06,477 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=50361', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/40vgn0z5.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/kl6gjpyd.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/prophet_model7rmir60u/prophet_model-20250730112606.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 11:26:06,477 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:26:06,673 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:26:06,695 - prophet - INFO - Making 3 forecasts with cutoffs between 2025-07-09 11:26:06.413054 and 2025-07-23 11:26:06.413054
+2025-07-30 11:26:06,695 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-30 11:26:06,702 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/xf5xfcbb.json
+2025-07-30 11:26:06,704 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/dj21t38c.json
+2025-07-30 11:26:06,704 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:26:06,704 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:26:06,704 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=9996', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/xf5xfcbb.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/dj21t38c.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/prophet_modelpuugf7lp/prophet_model-20250730112606.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 11:26:06,704 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:26:06,853 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:26:06,877 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/n50mt0h_.json
+2025-07-30 11:26:06,878 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/6oknppf4.json
+2025-07-30 11:26:06,879 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:26:06,879 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:26:06,879 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=61241', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/n50mt0h_.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/6oknppf4.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/prophet_model1ds0orlk/prophet_model-20250730112606.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 11:26:06,879 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:26:07,022 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:26:07,045 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/ql7_iolw.json
+2025-07-30 11:26:07,047 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/wphqaquf.json
+2025-07-30 11:26:07,048 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:26:07,048 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:26:07,048 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=51029', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/ql7_iolw.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/wphqaquf.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp8cscz9og/prophet_modell935u8my/prophet_model-20250730112607.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 11:26:07,048 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:26:07,231 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:26:07,257 - src.analytics.predictive - INFO - Prophet CV MAPE: 13.15%
+2025-07-30 11:26:19,105 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-30 11:26:19,112 - src.llm.agents - INFO - Agent chat query: 为什么最近销量下降？
+2025-07-30 11:26:20,701 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:26:21,312 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:26:21,765 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:26:21,765 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:26:21,766 - src.data.connectors - ERROR - Failed to convert to DataFrame: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:26:22,360 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:36:56,736 - src.llm.agents - INFO - Agent chat query: 为什么最近销量下降？
+2025-07-30 11:36:58,970 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:36:59,516 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:36:59,519 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:36:59,989 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:37:00,452 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:37:00,452 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:37:00,452 - src.data.connectors - ERROR - Failed to convert to DataFrame: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:37:01,154 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:37:51,543 - src.llm.agents - INFO - Agent chat query: 如何提升客单价？
+2025-07-30 11:37:53,662 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:37:53,673 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:37:53,677 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:37:53,678 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:37:54,550 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:38:48,581 - src.llm.agents - INFO - Agent chat query: 帮我分析下流失客户
+2025-07-30 11:38:50,254 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:38:50,314 - src.llm.agents - ERROR - Agent chat failed: AIGrowthAgent._get_churned_customers() takes 1 positional argument but 2 were given
+2025-07-30 11:39:56,057 - src.llm.agents - INFO - Agent chat query: 帮我分析下客户分群
+2025-07-30 11:39:57,542 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:39:57,577 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:39:58,401 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:41:08,248 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-30 11:41:26,546 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-30 11:41:29,622 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:41:30,088 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:41:30,089 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:41:30,089 - src.engine.core - WARNING - Failed to connect to database, using mock data: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:41:30,089 - src.data.mock_repository - INFO - Using mock order repository (no database connection)
+2025-07-30 11:41:30,539 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:41:31,087 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:41:31,087 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:41:31,088 - src.engine.core - WARNING - Failed to connect to database, using mock data: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:41:31,088 - src.data.mock_repository - INFO - Using mock customer repository (no database connection)
+2025-07-30 11:41:31,671 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:41:32,128 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:41:32,128 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:41:32,128 - src.engine.core - WARNING - Failed to connect to database, using mock data: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:41:32,128 - src.data.mock_repository - INFO - Using mock analytics repository (no database connection)
+2025-07-30 11:41:32,129 - src.api.app - INFO - Engine initialized successfully
+2025-07-30 11:41:32,139 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-30 11:41:32,139 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-30 11:41:32,140 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-30 11:41:32,140 - src.api.app - INFO - Scheduler started successfully
+2025-07-30 11:41:32,772 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-30 11:41:32,778 - src.llm.agents - INFO - Agent chat query: 帮我分析下流失客户
+2025-07-30 11:41:35,218 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:41:35,911 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:42:01,467 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-30 11:42:32,145 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-30 11:42:35,655 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:42:36,108 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:42:36,108 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:42:36,108 - src.engine.core - WARNING - Failed to connect to database, using mock data: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:42:36,109 - src.data.mock_repository - INFO - Using mock order repository (no database connection)
+2025-07-30 11:42:36,567 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:42:37,209 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:42:37,209 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:42:37,209 - src.engine.core - WARNING - Failed to connect to database, using mock data: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:42:37,209 - src.data.mock_repository - INFO - Using mock customer repository (no database connection)
+2025-07-30 11:42:37,824 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:42:38,336 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:42:38,336 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:42:38,336 - src.engine.core - WARNING - Failed to connect to database, using mock data: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:42:38,336 - src.data.mock_repository - INFO - Using mock analytics repository (no database connection)
+2025-07-30 11:42:38,337 - src.api.app - INFO - Engine initialized successfully
+2025-07-30 11:42:38,348 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-30 11:42:38,348 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-30 11:42:38,349 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-30 11:42:38,349 - src.api.app - INFO - Scheduler started successfully
+2025-07-30 11:42:45,785 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-30 11:42:45,791 - src.llm.agents - INFO - Agent chat query: 为什么最近销量下降？
+2025-07-30 11:42:47,449 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:42:48,044 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))': /?
+2025-07-30 11:42:48,576 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-30 11:42:48,576 - src.data.connectors - ERROR - Failed to connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:42:48,576 - src.data.connectors - ERROR - Failed to convert to DataFrame: Cannot connect to ClickHouse: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)'))) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-30 11:42:50,036 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:43:17,504 - src.llm.agents - INFO - Agent chat query: 哪些商品需要补货？
+2025-07-30 11:43:19,604 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:43:19,641 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:43:20,455 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:44:04,995 - src.llm.agents - INFO - Agent chat query: 近7天的销量如何
+2025-07-30 11:44:07,789 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:44:08,035 - src.data.connectors - ERROR - Failed to convert to DataFrame: ClickHouse connection has failed previously
+2025-07-30 11:44:08,762 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:55:16,168 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-30 11:55:38,415 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-30 11:55:40,914 - src.data.connectors - ERROR - Failed to connect to ClickHouse: HttpClient.__init__() got an unexpected keyword argument 'verify_ssl'
+2025-07-30 11:55:40,914 - src.engine.core - WARNING - Failed to connect to database, using mock data: Cannot connect to ClickHouse: HttpClient.__init__() got an unexpected keyword argument 'verify_ssl'
+2025-07-30 11:55:40,914 - src.data.mock_repository - INFO - Using mock order repository (no database connection)
+2025-07-30 11:55:40,914 - src.data.connectors - ERROR - Failed to connect to ClickHouse: HttpClient.__init__() got an unexpected keyword argument 'verify_ssl'
+2025-07-30 11:55:40,914 - src.engine.core - WARNING - Failed to connect to database, using mock data: Cannot connect to ClickHouse: HttpClient.__init__() got an unexpected keyword argument 'verify_ssl'
+2025-07-30 11:55:40,914 - src.data.mock_repository - INFO - Using mock customer repository (no database connection)
+2025-07-30 11:55:40,914 - src.data.connectors - ERROR - Failed to connect to ClickHouse: HttpClient.__init__() got an unexpected keyword argument 'verify_ssl'
+2025-07-30 11:55:40,914 - src.engine.core - WARNING - Failed to connect to database, using mock data: Cannot connect to ClickHouse: HttpClient.__init__() got an unexpected keyword argument 'verify_ssl'
+2025-07-30 11:55:40,914 - src.data.mock_repository - INFO - Using mock analytics repository (no database connection)
+2025-07-30 11:55:40,914 - src.api.app - INFO - Engine initialized successfully
+2025-07-30 11:55:40,915 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-30 11:55:40,915 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-30 11:55:40,915 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-30 11:55:40,915 - src.api.app - INFO - Scheduler started successfully
+2025-07-30 11:55:43,847 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-30 11:56:40,922 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-30 11:56:45,075 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 11:56:46,626 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 11:56:48,301 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 11:56:48,301 - src.api.app - INFO - Engine initialized successfully
+2025-07-30 11:56:48,304 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-30 11:56:48,304 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-30 11:56:48,305 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-30 11:56:48,305 - src.api.app - INFO - Scheduler started successfully
+2025-07-30 11:58:03,463 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-30 11:58:03,469 - src.llm.agents - INFO - Agent chat query: 近7天的销量如何
+2025-07-30 11:58:05,224 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:58:06,932 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 11:58:08,806 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:58:10,477 - src.llm.agents - INFO - Agent chat query: 近7天的销量如何
+2025-07-30 11:58:11,228 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:58:12,354 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:58:17,254 - src.llm.agents - INFO - Agent chat query: 为什么最近销量下降？
+2025-07-30 11:58:18,396 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:58:19,634 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 400 Bad Request"
+2025-07-30 11:58:19,635 - src.llm.azure_client - ERROR - LLM Error: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_jiCX5gmh2pEfSDLMARPFnUZR, call_gr1IMYkln88sBQ8ON9c8Qud3", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 11:58:19,635 - src.llm.agents - ERROR - Agent chat failed: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_jiCX5gmh2pEfSDLMARPFnUZR, call_gr1IMYkln88sBQ8ON9c8Qud3", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 11:58:31,201 - src.llm.agents - INFO - Agent chat query: 为什么最近销量下降？
+2025-07-30 11:58:33,143 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 11:58:34,318 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 400 Bad Request"
+2025-07-30 11:58:34,318 - src.llm.azure_client - ERROR - LLM Error: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_3RSF7ozxTZ4PoXNaInrqbAMK", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 11:58:34,319 - src.llm.agents - ERROR - Agent chat failed: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_3RSF7ozxTZ4PoXNaInrqbAMK", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 11:59:51,851 - src.api.routes - INFO - Running new daily analysis
+2025-07-30 11:59:51,852 - src.engine.core - INFO - Starting daily analysis
+2025-07-30 11:59:51,852 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-30 11:59:55,663 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-30 11:59:55,665 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-30 11:59:55,758 - src.engine.core - ERROR - Failed to detect sales anomalies: unsupported operand type(s) for -: 'float' and 'decimal.Decimal'
+2025-07-30 11:59:55,758 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-30 11:59:55,864 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-30 11:59:55,864 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-30 11:59:55,971 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/lw4k9r9q.json
+2025-07-30 11:59:55,976 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/za5iron8.json
+2025-07-30 11:59:55,976 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:59:55,976 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:59:55,976 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=27526', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/lw4k9r9q.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/za5iron8.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/prophet_modelbohyxaom/prophet_model-20250730115955.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:59:55,976 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:59:56,184 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:59:56,229 - prophet - INFO - Making 7 forecasts with cutoffs between 2025-06-10 00:00:00 and 2025-07-22 00:00:00
+2025-07-30 11:59:56,229 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-30 11:59:56,239 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/jt4raa87.json
+2025-07-30 11:59:56,243 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/u265tdu3.json
+2025-07-30 11:59:56,244 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:59:56,244 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:59:56,244 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=67847', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/jt4raa87.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/u265tdu3.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/prophet_model0d0zgpm1/prophet_model-20250730115956.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:59:56,244 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:59:56,262 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:59:56,291 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/h0cuqw0b.json
+2025-07-30 11:59:56,294 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/26vxb_8j.json
+2025-07-30 11:59:56,295 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:59:56,295 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:59:56,295 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=68337', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/h0cuqw0b.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/26vxb_8j.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/prophet_modeldxr3j0wf/prophet_model-20250730115956.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:59:56,295 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:59:56,316 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:59:56,360 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/2cycjd_f.json
+2025-07-30 11:59:56,364 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/extko7qk.json
+2025-07-30 11:59:56,364 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:59:56,364 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:59:56,364 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=40404', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/2cycjd_f.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/extko7qk.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/prophet_modelkofipcg3/prophet_model-20250730115956.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:59:56,364 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:59:56,384 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:59:56,413 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/o4y1wk28.json
+2025-07-30 11:59:56,416 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/fo6wx4w2.json
+2025-07-30 11:59:56,417 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:59:56,417 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:59:56,417 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=87510', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/o4y1wk28.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/fo6wx4w2.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/prophet_modeljqsahxnn/prophet_model-20250730115956.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:59:56,417 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:59:56,475 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:59:56,504 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/w85o1kmc.json
+2025-07-30 11:59:56,508 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/lkfh4mdq.json
+2025-07-30 11:59:56,509 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:59:56,509 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:59:56,509 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=17268', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/w85o1kmc.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/lkfh4mdq.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/prophet_models9wfy17w/prophet_model-20250730115956.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:59:56,509 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:59:56,529 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:59:56,557 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/ywputyaf.json
+2025-07-30 11:59:56,561 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/5rq4aqt3.json
+2025-07-30 11:59:56,561 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:59:56,562 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:59:56,562 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=73843', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/ywputyaf.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/5rq4aqt3.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/prophet_modela_rl6nu7/prophet_model-20250730115956.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:59:56,562 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:59:56,582 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:59:56,619 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/da3x3j_n.json
+2025-07-30 11:59:56,624 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/u04uh_zj.json
+2025-07-30 11:59:56,624 - cmdstanpy - DEBUG - idx 0
+2025-07-30 11:59:56,624 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 11:59:56,624 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=9357', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/da3x3j_n.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/u04uh_zj.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpieldhb4a/prophet_modelfo271vdg/prophet_model-20250730115956.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 11:59:56,624 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 11:59:56,656 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 11:59:56,699 - src.analytics.predictive - INFO - Prophet CV MAPE: 2.33%
+2025-07-30 11:59:56,702 - src.analytics.predictive - INFO - Starting XGBoost demand prediction
+2025-07-30 11:59:56,705 - src.engine.core - ERROR - Failed to run item demand prediction: unsupported operand type(s) for /: 'decimal.Decimal' and 'float'
+2025-07-30 11:59:56,705 - src.engine.core - INFO - Step 4: Causal analysis
+2025-07-30 11:59:56,706 - src.analytics.causal - INFO - Analyzing causal effect of has_promotion on revenue
+2025-07-30 11:59:56,727 - dowhy.causal_model - INFO - Model to find the causal effect of treatment ['has_promotion'] on outcome ['revenue']
+2025-07-30 11:59:56,727 - dowhy.causal_model - WARNING - There are an additional 9 variables in the dataset that are not in the graph. Variable names are: '['avg_order_value', 'customer_count', 'date', 'hour_of_day', 'location_id', 'new_customer_count', 'order_count', 'repeat_customer_count', 'total_revenue']'
+2025-07-30 11:59:56,728 - dowhy.causal_identifier.auto_identifier - INFO - Causal effect can be identified.
+2025-07-30 11:59:56,731 - dowhy.causal_identifier.auto_identifier - INFO - Instrumental variables for treatment and outcome:[]
+2025-07-30 11:59:56,731 - dowhy.causal_identifier.auto_identifier - INFO - Frontdoor variables for treatment and outcome:[]
+2025-07-30 11:59:56,731 - dowhy.causal_identifier.auto_identifier - INFO - Number of general adjustment sets found: 1
+2025-07-30 11:59:56,731 - dowhy.causal_identifier.auto_identifier - INFO - Causal effect can be identified.
+2025-07-30 11:59:56,733 - dowhy.causal_model - INFO - propensity_score_matching
+2025-07-30 11:59:56,735 - dowhy.causal_estimator - INFO - INFO: Using Propensity Score Matching Estimator
+2025-07-30 11:59:56,739 - src.analytics.causal - WARNING - PSM estimation failed: This solver needs samples of at least 2 classes in the data, but the data contains only one class: 0
+2025-07-30 11:59:56,739 - dowhy.causal_model - INFO - propensity_score_weighting
+2025-07-30 11:59:56,740 - dowhy.causal_estimator - INFO - INFO: Using Propensity Score Weighting Estimator
+2025-07-30 11:59:56,741 - src.analytics.causal - WARNING - IPW estimation failed: This solver needs samples of at least 2 classes in the data, but the data contains only one class: 0
+2025-07-30 11:59:56,741 - dowhy.causal_model - INFO - linear_regression
+2025-07-30 11:59:56,741 - dowhy.causal_estimator - INFO - INFO: Using Linear Regression Estimator
+2025-07-30 11:59:56,742 - dowhy.causal_estimator - INFO - b: revenue~has_promotion+is_weekend
+2025-07-30 11:59:56,742 - src.analytics.causal - WARNING - Linear regression estimation failed: Pandas data cast to numpy dtype of object. Check input data with np.asarray(data).
+2025-07-30 11:59:56,742 - src.engine.core - ERROR - Failed to run causal analysis: cannot access local variable 'lr_estimate' where it is not associated with a value
+2025-07-30 11:59:56,742 - src.engine.core - INFO - Step 5: Generating optimizations
+2025-07-30 11:59:56,747 - src.analytics.optimization - INFO - Optimizing pricing strategy
+2025-07-30 11:59:56,781 - src.engine.core - ERROR - Failed to generate pricing optimization: 'item_total_amt'
+2025-07-30 11:59:56,781 - src.engine.core - INFO - Step 6: Generating AI insights
+2025-07-30 11:59:56,805 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-30 11:59:59,731 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 12:00:12,340 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 12:00:12,343 - src.engine.core - INFO - Daily analysis completed in 20.49 seconds
+2025-07-30 12:00:12,988 - src.api.routes - ERROR - Failed to get item performance: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/api/routes.py", line 365, in get_item_performance
+    "performance_score": float(row.get('revenue', 0)) / max_revenue if max_revenue > 0 else 0
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+2025-07-30 12:00:20,661 - src.llm.agents - INFO - Agent chat query: 为什么最近销量下降？
+2025-07-30 12:00:22,813 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 12:00:24,656 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 400 Bad Request"
+2025-07-30 12:00:24,657 - src.llm.azure_client - ERROR - LLM Error: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_kdQwo6LMgpv84nyevXSnJGC5, call_jEsqyKpMjwhfYxC1S5wWzL86", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 12:00:24,657 - src.llm.agents - ERROR - Agent chat failed: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_kdQwo6LMgpv84nyevXSnJGC5, call_jEsqyKpMjwhfYxC1S5wWzL86", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 12:01:33,264 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 12:01:35,566 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 12:01:38,178 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 12:01:38,178 - src.api.app - INFO - Engine initialized successfully
+2025-07-30 12:01:38,182 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-30 12:01:38,182 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-30 12:01:38,182 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-30 12:01:38,183 - src.api.app - INFO - Scheduler started successfully
+2025-07-30 12:01:39,475 - src.api.routes - INFO - Running new daily analysis
+2025-07-30 12:01:39,475 - src.engine.core - INFO - Starting daily analysis
+2025-07-30 12:01:39,475 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-30 12:01:43,199 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-30 12:01:43,200 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-30 12:01:43,307 - src.engine.core - ERROR - Failed to detect sales anomalies: unsupported operand type(s) for -: 'float' and 'decimal.Decimal'
+2025-07-30 12:01:43,307 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-30 12:01:43,406 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-30 12:01:43,406 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-30 12:01:43,480 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/2cgeyktz.json
+2025-07-30 12:01:43,484 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/kb8eacls.json
+2025-07-30 12:01:43,485 - cmdstanpy - DEBUG - idx 0
+2025-07-30 12:01:43,485 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 12:01:43,485 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=84260', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/2cgeyktz.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/kb8eacls.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/prophet_modelihh324s5/prophet_model-20250730120143.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 12:01:43,485 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 12:01:43,528 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 12:01:43,557 - prophet - INFO - Making 7 forecasts with cutoffs between 2025-06-10 00:00:00 and 2025-07-22 00:00:00
+2025-07-30 12:01:43,557 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-30 12:01:43,565 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/pkqtl1jp.json
+2025-07-30 12:01:43,568 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/c4t5tid3.json
+2025-07-30 12:01:43,568 - cmdstanpy - DEBUG - idx 0
+2025-07-30 12:01:43,568 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 12:01:43,568 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=57960', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/pkqtl1jp.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/c4t5tid3.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/prophet_modelucxusd10/prophet_model-20250730120143.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 12:01:43,568 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 12:01:43,586 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 12:01:43,611 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/pd_k_503.json
+2025-07-30 12:01:43,614 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/8hg1k2y8.json
+2025-07-30 12:01:43,614 - cmdstanpy - DEBUG - idx 0
+2025-07-30 12:01:43,614 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 12:01:43,614 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=10366', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/pd_k_503.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/8hg1k2y8.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/prophet_model24l_smh9/prophet_model-20250730120143.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 12:01:43,614 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 12:01:43,633 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 12:01:43,657 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/ozzlp67h.json
+2025-07-30 12:01:43,661 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/wbwwv964.json
+2025-07-30 12:01:43,661 - cmdstanpy - DEBUG - idx 0
+2025-07-30 12:01:43,661 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 12:01:43,661 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=1022', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/ozzlp67h.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/wbwwv964.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/prophet_modelgiz2nvhh/prophet_model-20250730120143.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 12:01:43,661 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 12:01:43,681 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 12:01:43,709 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/yhw4n4qj.json
+2025-07-30 12:01:43,713 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/q_cq4do5.json
+2025-07-30 12:01:43,713 - cmdstanpy - DEBUG - idx 0
+2025-07-30 12:01:43,713 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 12:01:43,713 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=79768', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/yhw4n4qj.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/q_cq4do5.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/prophet_model1i1kwn8s/prophet_model-20250730120143.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 12:01:43,713 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 12:01:43,732 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 12:01:43,759 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/djomugj2.json
+2025-07-30 12:01:43,763 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/_b888dxj.json
+2025-07-30 12:01:43,763 - cmdstanpy - DEBUG - idx 0
+2025-07-30 12:01:43,763 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 12:01:43,763 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=29532', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/djomugj2.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/_b888dxj.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/prophet_modelljphwmkz/prophet_model-20250730120143.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 12:01:43,763 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 12:01:43,783 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 12:01:43,808 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/fhsq48qd.json
+2025-07-30 12:01:43,812 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/0dl5ky_6.json
+2025-07-30 12:01:43,812 - cmdstanpy - DEBUG - idx 0
+2025-07-30 12:01:43,812 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 12:01:43,812 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=61944', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/fhsq48qd.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/0dl5ky_6.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/prophet_model1sp7ieg6/prophet_model-20250730120143.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 12:01:43,812 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 12:01:43,833 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 12:01:43,857 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/9sw272l6.json
+2025-07-30 12:01:43,861 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/9nhcmwyh.json
+2025-07-30 12:01:43,861 - cmdstanpy - DEBUG - idx 0
+2025-07-30 12:01:43,861 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 12:01:43,861 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=21552', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/9sw272l6.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/9nhcmwyh.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/prophet_modelfxk2uqhe/prophet_model-20250730120143.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 12:01:43,861 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 12:01:43,884 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 12:01:43,911 - src.analytics.predictive - INFO - Prophet CV MAPE: 2.33%
+2025-07-30 12:01:43,912 - src.analytics.predictive - INFO - Starting XGBoost demand prediction
+2025-07-30 12:01:43,913 - src.engine.core - ERROR - Failed to run item demand prediction: unsupported operand type(s) for /: 'decimal.Decimal' and 'float'
+2025-07-30 12:01:43,913 - src.engine.core - INFO - Step 4: Causal analysis
+2025-07-30 12:01:43,914 - src.analytics.causal - INFO - Analyzing causal effect of has_promotion on revenue
+2025-07-30 12:01:43,925 - dowhy.causal_model - INFO - Model to find the causal effect of treatment ['has_promotion'] on outcome ['revenue']
+2025-07-30 12:01:43,925 - dowhy.causal_model - WARNING - There are an additional 9 variables in the dataset that are not in the graph. Variable names are: '['avg_order_value', 'customer_count', 'date', 'hour_of_day', 'location_id', 'new_customer_count', 'order_count', 'repeat_customer_count', 'total_revenue']'
+2025-07-30 12:01:43,926 - dowhy.causal_identifier.auto_identifier - INFO - Causal effect can be identified.
+2025-07-30 12:01:43,927 - dowhy.causal_identifier.auto_identifier - INFO - Instrumental variables for treatment and outcome:[]
+2025-07-30 12:01:43,927 - dowhy.causal_identifier.auto_identifier - INFO - Frontdoor variables for treatment and outcome:[]
+2025-07-30 12:01:43,928 - dowhy.causal_identifier.auto_identifier - INFO - Number of general adjustment sets found: 1
+2025-07-30 12:01:43,928 - dowhy.causal_identifier.auto_identifier - INFO - Causal effect can be identified.
+2025-07-30 12:01:43,928 - dowhy.causal_model - INFO - propensity_score_matching
+2025-07-30 12:01:43,929 - dowhy.causal_estimator - INFO - INFO: Using Propensity Score Matching Estimator
+2025-07-30 12:01:43,930 - src.analytics.causal - WARNING - PSM estimation failed: This solver needs samples of at least 2 classes in the data, but the data contains only one class: 0
+2025-07-30 12:01:43,930 - dowhy.causal_model - INFO - propensity_score_weighting
+2025-07-30 12:01:43,930 - dowhy.causal_estimator - INFO - INFO: Using Propensity Score Weighting Estimator
+2025-07-30 12:01:43,931 - src.analytics.causal - WARNING - IPW estimation failed: This solver needs samples of at least 2 classes in the data, but the data contains only one class: 0
+2025-07-30 12:01:43,931 - dowhy.causal_model - INFO - linear_regression
+2025-07-30 12:01:43,931 - dowhy.causal_estimator - INFO - INFO: Using Linear Regression Estimator
+2025-07-30 12:01:43,931 - dowhy.causal_estimator - INFO - b: revenue~has_promotion+is_weekend
+2025-07-30 12:01:43,932 - src.analytics.causal - WARNING - Linear regression estimation failed: Pandas data cast to numpy dtype of object. Check input data with np.asarray(data).
+2025-07-30 12:01:43,932 - src.engine.core - ERROR - Failed to run causal analysis: cannot access local variable 'lr_estimate' where it is not associated with a value
+2025-07-30 12:01:43,932 - src.engine.core - INFO - Step 5: Generating optimizations
+2025-07-30 12:01:43,935 - src.analytics.optimization - INFO - Optimizing pricing strategy
+2025-07-30 12:01:43,965 - src.engine.core - ERROR - Failed to generate pricing optimization: 'item_total_amt'
+2025-07-30 12:01:43,965 - src.engine.core - INFO - Step 6: Generating AI insights
+2025-07-30 12:01:44,432 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-30 12:01:48,012 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 12:02:01,221 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 12:02:01,225 - src.engine.core - INFO - Daily analysis completed in 21.75 seconds
+2025-07-30 12:02:01,439 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-30 12:02:01,446 - src.llm.agents - INFO - Agent chat query: 为什么最近销量下降？
+2025-07-30 12:02:03,064 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 12:02:04,953 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 12:02:06,246 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 12:38:15,873 - src.api.routes - ERROR - Failed to get item performance: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/api/routes.py", line 365, in get_item_performance
+    "performance_score": float(row.get('revenue', 0)) / max_revenue if max_revenue > 0 else 0
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+2025-07-30 12:38:25,241 - src.analytics.predictive - INFO - Starting Prophet prediction for 29 periods
+2025-07-30 12:38:25,298 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/baze3vwe.json
+2025-07-30 12:38:25,301 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/sxzfm5g1.json
+2025-07-30 12:38:25,301 - cmdstanpy - DEBUG - idx 0
+2025-07-30 12:38:25,301 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 12:38:25,301 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=58681', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/baze3vwe.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/sxzfm5g1.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/prophet_modelulc2uf9o/prophet_model-20250730123825.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 12:38:25,301 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 12:38:26,072 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 12:38:26,097 - prophet - INFO - Making 3 forecasts with cutoffs between 2025-07-08 00:00:00 and 2025-07-22 00:00:00
+2025-07-30 12:38:26,097 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-30 12:38:26,104 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/nn_j_m8u.json
+2025-07-30 12:38:26,105 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/xpc51pbh.json
+2025-07-30 12:38:26,106 - cmdstanpy - DEBUG - idx 0
+2025-07-30 12:38:26,106 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 12:38:26,106 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=65453', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/nn_j_m8u.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/xpc51pbh.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/prophet_model2bxka0v5/prophet_model-20250730123826.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 12:38:26,106 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 12:38:27,079 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 12:38:27,103 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/a51wabp1.json
+2025-07-30 12:38:27,105 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/6wg135zs.json
+2025-07-30 12:38:27,105 - cmdstanpy - DEBUG - idx 0
+2025-07-30 12:38:27,105 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 12:38:27,105 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=23782', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/a51wabp1.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/6wg135zs.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/prophet_modelmmsuqa_y/prophet_model-20250730123827.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 12:38:27,105 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 12:38:27,895 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 12:38:27,918 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/447_zz5z.json
+2025-07-30 12:38:27,920 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/8eojrajx.json
+2025-07-30 12:38:27,920 - cmdstanpy - DEBUG - idx 0
+2025-07-30 12:38:27,920 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 12:38:27,920 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=72847', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/447_zz5z.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/8eojrajx.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmp3fl5h07e/prophet_model6orqcgfi/prophet_model-20250730123827.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 12:38:27,920 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 12:38:28,749 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 12:38:28,776 - src.analytics.predictive - INFO - Prophet CV MAPE: 4.07%
+2025-07-30 13:04:03,146 - src.engine.scheduler - INFO - Running hourly monitoring
+2025-07-30 13:31:57,577 - src.llm.agents - INFO - Agent chat query: 哪些商品需要补货？
+2025-07-30 13:32:00,528 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 13:32:02,611 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 13:32:30,625 - src.llm.agents - INFO - Agent chat query: 你好
+2025-07-30 13:32:32,246 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 13:32:36,532 - src.llm.agents - INFO - Agent chat query: 客户分析
+2025-07-30 13:32:37,573 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 13:32:39,236 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 13:32:40,279 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"

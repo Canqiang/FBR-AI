@@ -30,7 +30,8 @@ class ClickHouseConnector:
                         username=self.settings.user,
                         password=self.settings.password,
                         database=self.settings.database,
-                        secure=False  # 本地开发使用非加密连接
+                        secure=True,  # 本地开发使用非加密连接
+                        verify= False
                     )
                     logger.info(
                         f"Connected to ClickHouse using clickhouse_connect: {self.settings.host}:{self.settings.port}")

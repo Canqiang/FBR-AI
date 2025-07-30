@@ -190,6 +190,7 @@ class AIGrowthAgent:
     - 新客户数：{df['new_customer_count'].sum():,}
     - 复购客户数：{df['repeat_customer_count'].sum():,}
     """
+            print(result)
             return result
         except Exception as e:
             logger.error(f"Error getting sales summary: {e}")
@@ -245,7 +246,7 @@ class AIGrowthAgent:
             logger.error(f"Error getting item performance: {e}")
             return f"获取商品表现时出错：{str(e)}"
 
-    def _get_churned_customers(self) -> str:
+    def _get_churned_customers(self,*args) -> str:
         """获取流失客户"""
         try:
             # 这里可以调用实际的流失客户分析方法
@@ -253,7 +254,7 @@ class AIGrowthAgent:
         except Exception as e:
             return f"分析流失客户时出错：{str(e)}"
 
-    def _get_promotion_effectiveness(self) -> str:
+    def _get_promotion_effectiveness(self,*args) -> str:
         """分析促销效果"""
         try:
             # 这里可以调用实际的促销效果分析方法
