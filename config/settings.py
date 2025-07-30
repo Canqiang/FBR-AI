@@ -1,3 +1,4 @@
+# config/settings.py
 import os
 import json
 import logging
@@ -57,39 +58,94 @@ class Settings:
         if env_path and os.path.exists(env_path):
             return env_path
 
-        # 默认路径
-        default_paths = [
-            "config/config.json",
-            "../config/config.json",
-            "../../config/config.json"
+        # 查找配置文件
+        current_dir = Path(__file__).parent
+        project_root = current_dir.parent
+
+        possible_paths = [
+            current_dir / "config.json",
+            project_root / "config" / "config.json",
+            Path.cwd() / "config" / "config.json",
+            Path.home() / ".fbr" / "config.json"
         ]
 
-        for path in default_paths:
-            if os.path.exists(path):
-                return path
+        for path in possible_paths:
+            if path.exists():
+                return str(path)
 
-        raise FileNotFoundError(
-            "Config file not found. Please create config/config.json from template."
-        )
+        # 如果没找到，返回默认路径
+        default_path = project_root / "config" / "config.json"
+        logger.warning(f"Config file not found, will use defaults. Expected at: {default_path}")
+        return str(default_path)
 
     def _load_config(self) -> Dict[str, Any]:
         """加载配置文件"""
+        # 默认配置
+        default_config = {
+            "AZURE_OPENAI_API_KEY": "",
+            "AZURE_OPENAI_ENDPOINT": "",
+            "AZURE_OPENAI_DEPLOYMENT": "",
+            "AZURE_OPENAI_API_VERSION": "",
+            "CLICKHOUSE_HOST": "localhost",
+            "CLICKHOUSE_PORT": 443,
+            "CLICKHOUSE_DATABASE": "dw",
+            "CLICKHOUSE_USER": "",
+            "CLICKHOUSE_PASSWORD": "",
+            "WEATHER_API_KEY": "",
+            "LOG_LEVEL": "INFO",
+            "LOG_FILE": "logs/ai_growth_engine.log"
+        }
+
         try:
             with open(self._config_path, "r", encoding="utf-8") as f:
-                config = json.load(f)
+                file_config = json.load(f)
+                # 合并配置
+                config = {**default_config, **file_config}
                 logger.info(f"Config loaded from {self._config_path}")
                 return config
+        except FileNotFoundError:
+            logger.warning(f"Config file not found at {self._config_path}, using defaults")
+            return default_config
+        except json.JSONDecodeError as e:
+            logger.error(f"Invalid JSON in config file: {e}")
+            logger.warning("Using default configuration")
+            return default_config
         except Exception as e:
             logger.error(f"Failed to load config: {e}")
-            raise
+            logger.warning("Using default configuration")
+            return default_config
+
+    def _get_config_value(self, key: str, default: Any = None) -> Any:
+        """获取配置值，支持环境变量覆盖"""
+        # 环境变量优先
+        env_value = os.getenv(key)
+        if env_value:
+            # 对于端口号等数字类型，进行转换
+            if key.endswith('_PORT') and env_value.isdigit():
+                return int(env_value)
+            return env_value
+
+        # 配置文件
+        if key in self._config:
+            return self._config[key]
+
+        # 默认值
+        if default is not None:
+            return default
+
+        # 对于某些关键配置，返回空字符串而不是报错
+        if key.startswith('AZURE_'):
+            return ""
+
+        raise ValueError(f"Configuration key '{key}' not found")
 
     def _get_azure_openai_config(self) -> AzureOpenAIConfig:
         """获取Azure OpenAI配置"""
         return AzureOpenAIConfig(
-            api_key=self._get_config_value("AZURE_OPENAI_API_KEY"),
-            endpoint=self._get_config_value("AZURE_OPENAI_ENDPOINT"),
-            deployment=self._get_config_value("AZURE_OPENAI_DEPLOYMENT"),
-            api_version=self._get_config_value("AZURE_OPENAI_API_VERSION")
+            api_key=self._get_config_value("AZURE_OPENAI_API_KEY", ""),
+            endpoint=self._get_config_value("AZURE_OPENAI_ENDPOINT", ""),
+            deployment=self._get_config_value("AZURE_OPENAI_DEPLOYMENT", "gpt-4"),
+            api_version=self._get_config_value("AZURE_OPENAI_API_VERSION", "2024-02-15-preview")
         )
 
     def _get_clickhouse_config(self) -> ClickHouseConfig:
@@ -110,39 +166,36 @@ class Settings:
             weather_api_key=self._get_config_value("WEATHER_API_KEY", "")
         )
 
-    def _get_config_value(self, key: str, default: Any = None) -> Any:
-        """获取配置值，支持环境变量覆盖"""
-        # 环境变量优先
-        env_value = os.getenv(key)
-        if env_value:
-            return env_value
-
-        # 配置文件
-        if key in self._config:
-            return self._config[key]
-
-        # 默认值
-        if default is not None:
-            return default
-
-        raise ValueError(f"Configuration key '{key}' not found")
-
     def _setup_logging(self):
         """设置日志"""
-        log_dir = Path(self.app.log_file).parent
+        log_file = Path(self.app.log_file)
+        log_dir = log_file.parent
+
+        # 创建日志目录
         log_dir.mkdir(parents=True, exist_ok=True)
 
+        # 配置日志
         logging.basicConfig(
             level=getattr(logging, self.app.log_level),
             format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
             handlers=[
-                logging.FileHandler(self.app.log_file),
+                logging.FileHandler(log_file, encoding='utf-8'),
                 logging.StreamHandler()
             ]
         )
 
+    def has_azure_openai(self) -> bool:
+        """检查是否配置了Azure OpenAI"""
+        return bool(self.azure_openai.api_key and self.azure_openai.endpoint)
+
+    def has_clickhouse(self) -> bool:
+        """检查是否配置了ClickHouse"""
+        return bool(self.clickhouse.host)
+
+
 # 单例模式
 _settings = None
+
 
 def get_settings() -> Settings:
     """获取全局配置实例"""

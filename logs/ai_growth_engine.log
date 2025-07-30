@@ -1908,3 +1908,826 @@ fastapi.exceptions.ResponseValidationError: 1 validation errors:
   {'type': 'missing', 'loc': ('response', 'model_performance'), 'msg': 'Field required', 'input': {'prediction_type': 'sales', 'periods': 7, 'predictions': [{'ds': Timestamp('2025-07-30 00:00:00'), 'yhat': -1468.6359114628715, 'yhat_lower': -2698.76792936799, 'yhat_upper': -206.47084451496164, 'trend': 1604.2473848446234, 'weekly': -1.114823418523713, 'yearly': -0.8006438126135306}, {'ds': Timestamp('2025-07-31 00:00:00'), 'yhat': 11371.03659349528, 'yhat_lower': 10144.890789084599, 'yhat_upper': 12606.65558478109, 'trend': 1605.653986756962, 'weekly': 6.688379999999999, 'yearly': -0.6065076369125693}, {'ds': Timestamp('2025-08-01 00:00:00'), 'yhat': -872.1544964337842, 'yhat_lower': -2163.6770825183853, 'yhat_upper': 306.6407316648147, 'trend': 1607.0605886693004, 'weekly': -1.1146365814955226, 'yearly': -0.4280651079012395}, {'ds': Timestamp('2025-08-02 00:00:00'), 'yhat': -620.7800447359326, 'yhat_lower': -1907.8743902230565, 'yhat_upper': 597.0105272175454, 'trend': 1608.467190581639, 'weekly': -1.1147818431772405, 'yearly': -0.27116326553924613}, {'ds': Timestamp('2025-08-03 00:00:00'), 'yhat': -411.59581296715845, 'yhat_lower': -1624.9767184204843, 'yhat_upper': 813.9164251933889, 'trend': 1609.8737924939776, 'weekly': -1.1146884248041973, 'yearly': -0.1409811903458973}, {'ds': Timestamp('2025-08-04 00:00:00'), 'yhat': -252.37887721729305, 'yhat_lower': -1501.094794101926, 'yhat_upper': 1013.7524049301958, 'trend': 1611.2803944063162, 'weekly': -1.1147715751916776, 'yearly': -0.041860925329923714}, {'ds': Timestamp('2025-08-05 00:00:00'), 'yhat': -148.1132065096305, 'yhat_lower': -1273.7919914718782, 'yhat_upper': 1151.4544312001328, 'trend': 1612.6869963186546, 'weekly': -1.114678156814083, 'yearly': 0.022835656162850545}], 'confidence_intervals': {'lower': [-2698.76792936799, 10144.890789084599, -2163.6770825183853, -1907.8743902230565, -1624.9767184204843, -1501.094794101926, -1273.7919914718782], 'upper': [-206.47084451496164, 12606.65558478109, 306.6407316648147, 597.0105272175454, 813.9164251933889, 1013.7524049301958, 1151.4544312001328]}}}
 
 2025-07-29 18:00:32,079 - src.llm.agents - ERROR - Agent chat failed: "Input to ChatPromptTemplate is missing variables {'tools'}.  Expected: ['agent_scratchpad', 'chat_history', 'input', 'tools'] Received: ['input', 'chat_history', 'intermediate_steps', 'agent_scratchpad']\nNote: if you intended {tools} to be part of the string and not a variable, please escape it with double curly braces like: '{{tools}}'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT "
+2025-07-29 21:25:37,760 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 21:25:37,769 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 21:25:37,776 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 21:25:37,781 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 21:25:37,781 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 21:25:37,781 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 21:25:41,644 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 21:25:41,644 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 21:25:52,021 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1501d59d0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')': /?
+2025-07-29 21:26:02,027 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-29 21:26:02,028 - src.data.connectors - ERROR - Failed to convert to DataFrame: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1501d5ac0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:26:02,028 - src.engine.core - ERROR - Daily analysis failed: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1501d5ac0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x1501d5ac0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 456, in _raw_request
+    response = self.http.request(method, url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/poolmanager.py", line 459, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1501d5ac0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 51, in run_daily_analysis
+    data = self._collect_daily_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 110, in _collect_daily_data
+    'daily_sales': self.order_repo.get_daily_sales(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/repositories.py", line 107, in get_daily_sales
+    return self.db.execute_df(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 54, in execute_df
+    return self.client.query_df(query)
+           ^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 23, in client
+    self._client = clickhouse_connect.get_client(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/__init__.py", line 122, in create_client
+    return HttpClient(interface, host, port, username, password, database, access_token,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 165, in __init__
+    super().__init__(database=database,
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 70, in __init__
+    self._init_common_settings(apply_server_timezone)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 75, in _init_common_settings
+    tuple(self.command('SELECT version(), timezone()', use_database=False))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 368, in command
+    response = self._raw_request(payload, params, headers, method, fields=fields, server_wait=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 468, in _raw_request
+    raise OperationalError(f'Error {ex} executing HTTP request attempt {attempts}{err_url}') from ex
+clickhouse_connect.driver.exceptions.OperationalError: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1501d5ac0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:26:02,039 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 21:26:02,050 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 21:26:02,050 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 21:26:12,054 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x15205c110>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')': /?
+2025-07-29 21:26:22,060 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-29 21:26:22,061 - src.data.connectors - ERROR - Failed to convert to DataFrame: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x15205c1d0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:26:22,061 - src.engine.core - ERROR - Daily analysis failed: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x15205c1d0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x15205c1d0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 456, in _raw_request
+    response = self.http.request(method, url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/poolmanager.py", line 459, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x15205c1d0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 51, in run_daily_analysis
+    data = self._collect_daily_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 110, in _collect_daily_data
+    'daily_sales': self.order_repo.get_daily_sales(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/repositories.py", line 107, in get_daily_sales
+    return self.db.execute_df(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 54, in execute_df
+    return self.client.query_df(query)
+           ^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 23, in client
+    self._client = clickhouse_connect.get_client(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/__init__.py", line 122, in create_client
+    return HttpClient(interface, host, port, username, password, database, access_token,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 165, in __init__
+    super().__init__(database=database,
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 70, in __init__
+    self._init_common_settings(apply_server_timezone)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 75, in _init_common_settings
+    tuple(self.command('SELECT version(), timezone()', use_database=False))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 368, in command
+    response = self._raw_request(payload, params, headers, method, fields=fields, server_wait=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 468, in _raw_request
+    raise OperationalError(f'Error {ex} executing HTTP request attempt {attempts}{err_url}') from ex
+clickhouse_connect.driver.exceptions.OperationalError: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x15205c1d0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:26:22,072 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 21:26:37,376 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 21:26:37,385 - src.api.app - INFO - Starting AI Growth Engine API
+2025-07-29 21:26:37,405 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-29 21:26:37,411 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-29 21:26:37,411 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-29 21:26:37,412 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-29 21:26:41,235 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 21:26:41,235 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 21:26:51,241 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1655d6ba0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')': /?
+2025-07-29 21:27:01,247 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-29 21:27:01,247 - src.data.connectors - ERROR - Failed to convert to DataFrame: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1655d6c90>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:27:01,247 - src.engine.core - ERROR - Daily analysis failed: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1655d6c90>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x1655d6c90>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 456, in _raw_request
+    response = self.http.request(method, url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/poolmanager.py", line 459, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1655d6c90>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 51, in run_daily_analysis
+    data = self._collect_daily_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 110, in _collect_daily_data
+    'daily_sales': self.order_repo.get_daily_sales(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/repositories.py", line 107, in get_daily_sales
+    return self.db.execute_df(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 54, in execute_df
+    return self.client.query_df(query)
+           ^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 23, in client
+    self._client = clickhouse_connect.get_client(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/__init__.py", line 122, in create_client
+    return HttpClient(interface, host, port, username, password, database, access_token,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 165, in __init__
+    super().__init__(database=database,
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 70, in __init__
+    self._init_common_settings(apply_server_timezone)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 75, in _init_common_settings
+    tuple(self.command('SELECT version(), timezone()', use_database=False))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 368, in command
+    response = self._raw_request(payload, params, headers, method, fields=fields, server_wait=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 468, in _raw_request
+    raise OperationalError(f'Error {ex} executing HTTP request attempt {attempts}{err_url}') from ex
+clickhouse_connect.driver.exceptions.OperationalError: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1655d6c90>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:27:01,256 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 21:27:01,288 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 21:27:01,288 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 21:27:11,294 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x166260800>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')': /?
+2025-07-29 21:27:21,301 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-29 21:27:21,301 - src.data.connectors - ERROR - Failed to convert to DataFrame: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1662600b0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:27:21,301 - src.engine.core - ERROR - Daily analysis failed: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1662600b0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x1662600b0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 456, in _raw_request
+    response = self.http.request(method, url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/poolmanager.py", line 459, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1662600b0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 51, in run_daily_analysis
+    data = self._collect_daily_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 110, in _collect_daily_data
+    'daily_sales': self.order_repo.get_daily_sales(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/repositories.py", line 107, in get_daily_sales
+    return self.db.execute_df(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 54, in execute_df
+    return self.client.query_df(query)
+           ^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 23, in client
+    self._client = clickhouse_connect.get_client(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/__init__.py", line 122, in create_client
+    return HttpClient(interface, host, port, username, password, database, access_token,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 165, in __init__
+    super().__init__(database=database,
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 70, in __init__
+    self._init_common_settings(apply_server_timezone)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 75, in _init_common_settings
+    tuple(self.command('SELECT version(), timezone()', use_database=False))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 368, in command
+    response = self._raw_request(payload, params, headers, method, fields=fields, server_wait=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 468, in _raw_request
+    raise OperationalError(f'Error {ex} executing HTTP request attempt {attempts}{err_url}') from ex
+clickhouse_connect.driver.exceptions.OperationalError: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x1662600b0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:27:21,306 - src.api.app - ERROR - Global exception: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 328, in app
+    content = await serialize_response(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/fastapi/routing.py", line 177, in serialize_response
+    raise ResponseValidationError(
+fastapi.exceptions.ResponseValidationError: 1 validation errors:
+  {'type': 'list_type', 'loc': ('response', 'anomalies'), 'msg': 'Input should be a valid list', 'input': {}}
+
+2025-07-29 21:27:21,362 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 21:27:21,362 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 21:27:31,365 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x166261eb0>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')': /?
+2025-07-29 21:27:41,370 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-29 21:27:41,371 - src.data.connectors - ERROR - Failed to convert to DataFrame: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x166261f70>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:27:41,371 - src.engine.core - ERROR - Daily analysis failed: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x166261f70>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x166261f70>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 456, in _raw_request
+    response = self.http.request(method, url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/poolmanager.py", line 459, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x166261f70>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 51, in run_daily_analysis
+    data = self._collect_daily_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 110, in _collect_daily_data
+    'daily_sales': self.order_repo.get_daily_sales(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/repositories.py", line 107, in get_daily_sales
+    return self.db.execute_df(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 54, in execute_df
+    return self.client.query_df(query)
+           ^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 23, in client
+    self._client = clickhouse_connect.get_client(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/__init__.py", line 122, in create_client
+    return HttpClient(interface, host, port, username, password, database, access_token,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 165, in __init__
+    super().__init__(database=database,
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 70, in __init__
+    self._init_common_settings(apply_server_timezone)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 75, in _init_common_settings
+    tuple(self.command('SELECT version(), timezone()', use_database=False))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 368, in command
+    response = self._raw_request(payload, params, headers, method, fields=fields, server_wait=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 468, in _raw_request
+    raise OperationalError(f'Error {ex} executing HTTP request attempt {attempts}{err_url}') from ex
+clickhouse_connect.driver.exceptions.OperationalError: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x166261f70>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:27:41,399 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 21:27:41,399 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 21:27:51,418 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x166261670>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')': /?
+2025-07-29 21:28:01,423 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-29 21:28:01,423 - src.data.connectors - ERROR - Failed to convert to DataFrame: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x166261c40>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:28:01,424 - src.engine.core - ERROR - Daily analysis failed: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x166261c40>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x166261c40>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 456, in _raw_request
+    response = self.http.request(method, url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/poolmanager.py", line 459, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x166261c40>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 51, in run_daily_analysis
+    data = self._collect_daily_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 110, in _collect_daily_data
+    'daily_sales': self.order_repo.get_daily_sales(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/repositories.py", line 107, in get_daily_sales
+    return self.db.execute_df(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 54, in execute_df
+    return self.client.query_df(query)
+           ^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 23, in client
+    self._client = clickhouse_connect.get_client(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/__init__.py", line 122, in create_client
+    return HttpClient(interface, host, port, username, password, database, access_token,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 165, in __init__
+    super().__init__(database=database,
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 70, in __init__
+    self._init_common_settings(apply_server_timezone)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 75, in _init_common_settings
+    tuple(self.command('SELECT version(), timezone()', use_database=False))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 368, in command
+    response = self._raw_request(payload, params, headers, method, fields=fields, server_wait=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 468, in _raw_request
+    raise OperationalError(f'Error {ex} executing HTTP request attempt {attempts}{err_url}') from ex
+clickhouse_connect.driver.exceptions.OperationalError: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x166261c40>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:28:11,183 - src.engine.core - INFO - Starting daily analysis
+2025-07-29 21:28:11,184 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-29 21:28:21,194 - urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x16627c080>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')': /?
+2025-07-29 21:28:31,203 - clickhouse_connect.driver.httpclient - WARNING - Unexpected Http Driver Exception
+2025-07-29 21:28:31,204 - src.data.connectors - ERROR - Failed to convert to DataFrame: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x16627c230>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:28:31,205 - src.engine.core - ERROR - Daily analysis failed: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x16627c230>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connection.py", line 207, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x16627c230>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 456, in _raw_request
+    response = self.http.request(method, url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/poolmanager.py", line 459, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x16627c230>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 51, in run_daily_analysis
+    data = self._collect_daily_data()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/engine/core.py", line 110, in _collect_daily_data
+    'daily_sales': self.order_repo.get_daily_sales(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/repositories.py", line 107, in get_daily_sales
+    return self.db.execute_df(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 54, in execute_df
+    return self.client.query_df(query)
+           ^^^^^^^^^^^
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/data/connectors.py", line 23, in client
+    self._client = clickhouse_connect.get_client(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/__init__.py", line 122, in create_client
+    return HttpClient(interface, host, port, username, password, database, access_token,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 165, in __init__
+    super().__init__(database=database,
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 70, in __init__
+    self._init_common_settings(apply_server_timezone)
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 75, in _init_common_settings
+    tuple(self.command('SELECT version(), timezone()', use_database=False))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 368, in command
+    response = self._raw_request(payload, params, headers, method, fields=fields, server_wait=False)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 468, in _raw_request
+    raise OperationalError(f'Error {ex} executing HTTP request attempt {attempts}{err_url}') from ex
+clickhouse_connect.driver.exceptions.OperationalError: Error HTTPSConnectionPool(host='clickhouse-0-0.umetea.net', port=443): Max retries exceeded with url: /? (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x16627c230>, 'Connection to clickhouse-0-0.umetea.net timed out. (connect timeout=10)')) executing HTTP request attempt 1 (https://clickhouse-0-0.umetea.net:443)
+2025-07-29 21:28:33,556 - src.llm.agents - ERROR - Agent chat failed: "Input to ChatPromptTemplate is missing variables {'tools'}.  Expected: ['agent_scratchpad', 'chat_history', 'input', 'tools'] Received: ['input', 'chat_history', 'intermediate_steps', 'agent_scratchpad']\nNote: if you intended {tools} to be part of the string and not a variable, please escape it with double curly braces like: '{{tools}}'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT "
+2025-07-29 21:36:03,068 - src.llm.agents - ERROR - Agent chat failed: "Input to ChatPromptTemplate is missing variables {'tools'}.  Expected: ['agent_scratchpad', 'chat_history', 'input', 'tools'] Received: ['input', 'chat_history', 'intermediate_steps', 'agent_scratchpad']\nNote: if you intended {tools} to be part of the string and not a variable, please escape it with double curly braces like: '{{tools}}'.\nFor troubleshooting, visit: https://python.langchain.com/docs/troubleshooting/errors/INVALID_PROMPT_INPUT "
