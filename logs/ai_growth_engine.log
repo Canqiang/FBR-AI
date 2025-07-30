@@ -4779,3 +4779,35 @@ Traceback (most recent call last):
     "performance_score": float(row.get('revenue', 0)) / max_revenue if max_revenue > 0 else 0
                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
 TypeError: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+2025-07-30 16:15:41,645 - src.engine.scheduler - INFO - Running hourly monitoring
+2025-07-30 16:58:41,923 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-30 16:58:42,581 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-30 16:58:49,889 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 16:58:52,952 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 16:58:56,123 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 16:58:56,123 - src.api.app - INFO - Engine initialized successfully
+2025-07-30 16:58:56,127 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-30 16:58:56,127 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-30 16:58:56,127 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-30 16:58:56,127 - src.api.app - INFO - Scheduler started successfully
+2025-07-30 17:12:01,300 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-30 17:12:56,183 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-30 17:13:00,873 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 17:13:02,981 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 17:13:04,561 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 17:13:04,562 - src.api.app - INFO - Engine initialized successfully
+2025-07-30 17:13:04,572 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-30 17:13:04,572 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-30 17:13:04,574 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-30 17:13:04,574 - src.api.app - INFO - Scheduler started successfully
+2025-07-30 17:13:51,565 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-30 17:14:04,576 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-30 17:14:09,201 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 17:14:11,288 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 17:14:13,075 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 17:14:13,075 - src.api.app - INFO - Engine initialized successfully
+2025-07-30 17:14:13,079 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-30 17:14:13,079 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-30 17:14:13,080 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-30 17:14:13,080 - src.api.app - INFO - Scheduler started successfully
+2025-07-30 17:33:53,914 - src.api.app - INFO - Shutting down AI Growth Engine API
