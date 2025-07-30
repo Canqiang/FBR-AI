@@ -1,4 +1,3 @@
-# src/api/app.py
 import logging
 from fastapi import FastAPI, HTTPException, BackgroundTasks, Depends
 from fastapi.middleware.cors import CORSMiddleware
@@ -29,6 +28,10 @@ async def lifespan(app: FastAPI):
         from src.engine.core import AIGrowthEngineCore
         engine = AIGrowthEngineCore()
         logger.info("Engine initialized successfully")
+
+        # 设置依赖中的引擎实例
+        from src.api.dependencies import set_engine
+        set_engine(engine)
 
         # 初始化调度器（可选）
         try:
@@ -74,7 +77,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 导入路由
+# 导入路由 - 现在不会有循环导入问题了
 from src.api.routes import router
 
 # 添加路由
@@ -133,21 +136,6 @@ async def health_check():
         health_status["message"] = "Engine not initialized"
 
     return health_status
-
-
-# 获取引擎实例的依赖
-def get_engine():
-    """获取引擎实例"""
-    if not engine:
-        logger.error("Engine not initialized")
-        # 尝试创建一个新实例
-        try:
-            from src.engine.core import AIGrowthEngineCore
-            return AIGrowthEngineCore()
-        except Exception as e:
-            logger.error(f"Failed to create engine instance: {e}")
-            raise HTTPException(status_code=503, detail="Engine not available")
-    return engine
 
 
 # 开发模式下的自动重载

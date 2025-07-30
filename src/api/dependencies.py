@@ -1,14 +1,23 @@
+"""API依赖项"""
+import logging
 from fastapi import HTTPException
-from ..engine.core import AIGrowthEngineCore
+from typing import Optional
 
-# 这个engine对象要和app.py一致，如果是全局单例
-engine = None
+logger = logging.getLogger(__name__)
 
-def set_engine(global_engine):
-    global engine
-    engine = global_engine
+# 全局引擎实例（从app.py中引用）
+_engine = None
 
-def get_engine() -> AIGrowthEngineCore:
-    if not engine:
-        raise HTTPException(status_code=503, detail="Engine not initialized")
-    return engine
+
+def set_engine(engine):
+    """设置引擎实例（由app.py在启动时调用）"""
+    global _engine
+    _engine = engine
+
+
+def get_engine():
+    """获取引擎实例的依赖函数"""
+    if not _engine:
+        logger.error("Engine not initialized")
+        raise HTTPException(status_code=503, detail="Engine not available")
+    return _engine

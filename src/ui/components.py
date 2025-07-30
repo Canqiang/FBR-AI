@@ -101,14 +101,51 @@ def ItemPerformanceTable(items: List[Dict]):
     # 转换为DataFrame
     df = pd.DataFrame(items)
 
+    # 确保必要的列存在
+    required_columns = ['item_name', 'revenue', 'units_sold']
+    for col in required_columns:
+        if col not in df.columns:
+            st.error(f"数据缺少必要的列: {col}")
+            return
+
+    # 确保 revenue 是数字类型
+    try:
+        # 转换为数字，无法转换的设为 0
+        df['revenue'] = pd.to_numeric(df['revenue'], errors='coerce').fillna(0)
+    except Exception as e:
+        st.error(f"转换营收数据时出错: {e}")
+        df['revenue'] = 0
+
     # 格式化显示
-    df['revenue_fmt'] = df['revenue'].apply(lambda x: f"¥{x:,.0f}")
-    df['performance_bar'] = df['performance_score'].apply(
-        lambda x: '🟩' * int(x * 5)
-    )
+    df['revenue_fmt'] = df['revenue'].apply(lambda x: f"¥{float(x):,.0f}" if pd.notna(x) else "¥0")
+
+    # 处理 performance_score（如果存在）
+    if 'performance_score' in df.columns:
+        try:
+            df['performance_score'] = pd.to_numeric(df['performance_score'], errors='coerce').fillna(0)
+            df['performance_bar'] = df['performance_score'].apply(
+                lambda x: '🟩' * max(0, min(5, int(float(x) * 5)))
+            )
+        except:
+            df['performance_bar'] = '🟩🟩🟩'  # 默认3个方块
+    else:
+        # 如果没有 performance_score，根据 revenue 生成
+        max_revenue = df['revenue'].max() if df['revenue'].max() > 0 else 1
+        df['performance_bar'] = df['revenue'].apply(
+            lambda x: '🟩' * max(1, min(5, int((x / max_revenue) * 5)))
+        )
+
+    # 处理 category 列（如果不存在则设为默认值）
+    if 'category' not in df.columns:
+        df['category'] = '未分类'
+
+    # 确保 units_sold 是数字
+    if 'units_sold' in df.columns:
+        df['units_sold'] = pd.to_numeric(df['units_sold'], errors='coerce').fillna(0).astype(int)
 
     # 显示表格
-    display_df = df[['item_name', 'category', 'revenue_fmt', 'units_sold', 'performance_bar']]
+    display_columns = ['item_name', 'category', 'revenue_fmt', 'units_sold', 'performance_bar']
+    display_df = df[display_columns].copy()
     display_df.columns = ['商品名称', '类别', '销售额', '售出数量', '表现']
 
     st.dataframe(

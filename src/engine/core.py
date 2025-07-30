@@ -59,21 +59,23 @@ class AIGrowthEngineCore:
     def ai_agent(self):
         """延迟加载AI代理"""
         if self._ai_agent is None:
-            try:
-                from ..llm.agents import AIGrowthAgent
-                self._ai_agent = AIGrowthAgent()
-            except Exception as e:
-                logger.warning(f"Failed to initialize AI agent: {e}")
+            from ..llm.agents import AIGrowthAgent
+            self._ai_agent = AIGrowthAgent()
+            # try:
+            #     from ..llm.agents import AIGrowthAgent
+            #     self._ai_agent = AIGrowthAgent()
+            # except Exception as e:
+            #     logger.warning(f"Failed to initialize AI agent: {e}")
+            #
+            #     # 返回一个简单的mock对象
+            #     class MockAgent:
+            #         def chat(self, input_text):
+            #             return {
+            #                 "answer": "AI功能暂时不可用，请检查Azure OpenAI配置。",
+            #                 "intermediate_steps": []
+            #             }
 
-                # 返回一个简单的mock对象
-                class MockAgent:
-                    def chat(self, input_text):
-                        return {
-                            "answer": "AI功能暂时不可用，请检查Azure OpenAI配置。",
-                            "intermediate_steps": []
-                        }
-
-                self._ai_agent = MockAgent()
+                # self._ai_agent = MockAgent()
         return self._ai_agent
 
     @property
