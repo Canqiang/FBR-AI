@@ -4438,3 +4438,344 @@ TypeError: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
 2025-07-30 13:32:37,573 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
 2025-07-30 13:32:39,236 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
 2025-07-30 13:32:40,279 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 13:54:47,615 - src.api.app - INFO - Shutting down AI Growth Engine API
+2025-07-30 13:55:04,788 - src.engine.scheduler - INFO - Task scheduler stopped
+2025-07-30 13:55:11,030 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 13:55:13,010 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 13:55:14,801 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 13:55:14,801 - src.api.app - INFO - Engine initialized successfully
+2025-07-30 13:55:14,806 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-30 13:55:14,806 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-30 13:55:14,806 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-30 13:55:14,807 - src.api.app - INFO - Scheduler started successfully
+2025-07-30 14:11:22,624 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-30 14:11:22,631 - src.llm.agents - INFO - Agent chat query: 最近一个月什么卖得最好
+2025-07-30 14:11:24,403 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:11:26,279 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 14:11:27,786 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:11:29,380 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:11:46,877 - src.llm.agents - INFO - Agent chat query: 为什么它会卖得好
+2025-07-30 14:11:48,337 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:11:58,751 - src.llm.agents - INFO - Agent chat query: 什么卖得最差
+2025-07-30 14:12:00,388 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:12:01,592 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:13:02,537 - src.llm.agents - INFO - Agent chat query: 为什么最近销量下降？
+2025-07-30 14:13:04,587 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:13:05,873 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 400 Bad Request"
+2025-07-30 14:13:05,875 - src.llm.azure_client - ERROR - LLM Error: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_bHHePiw4tFs0hKCAg9o7wXVm, call_0OV8TxeO5aQC95LQS99fDFJT", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 14:13:05,875 - src.llm.agents - ERROR - Agent chat failed: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_bHHePiw4tFs0hKCAg9o7wXVm, call_0OV8TxeO5aQC95LQS99fDFJT", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 14:13:09,581 - src.llm.agents - INFO - Agent chat query: 为什么最近销量下降？
+2025-07-30 14:13:11,877 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:13:13,539 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 400 Bad Request"
+2025-07-30 14:13:13,540 - src.llm.azure_client - ERROR - LLM Error: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_BwetvoTzFhk96Ckcsj2M7eSR, call_cPQ7pvqiTmUYnBdxa4MRODnK", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 14:13:13,540 - src.llm.agents - ERROR - Agent chat failed: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_BwetvoTzFhk96Ckcsj2M7eSR, call_cPQ7pvqiTmUYnBdxa4MRODnK", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 14:13:16,779 - src.llm.agents - INFO - Agent chat query: 明天需要注意什么？
+2025-07-30 14:13:18,399 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:13:21,381 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 14:13:22,473 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 400 Bad Request"
+2025-07-30 14:13:22,474 - src.llm.azure_client - ERROR - LLM Error: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_Isto5UzgiWUBVCD56wu4RmoS", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 14:13:22,474 - src.llm.agents - ERROR - Agent chat failed: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_Isto5UzgiWUBVCD56wu4RmoS", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 14:13:40,551 - src.llm.agents - INFO - Agent chat query: 哪些商品需要补货？
+2025-07-30 14:13:42,562 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:13:43,921 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:13:57,444 - src.api.routes - INFO - Running new daily analysis
+2025-07-30 14:13:57,444 - src.engine.core - INFO - Starting daily analysis
+2025-07-30 14:13:57,444 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-30 14:14:01,825 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-30 14:14:01,829 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-30 14:14:01,933 - src.engine.core - ERROR - Failed to detect sales anomalies: unsupported operand type(s) for -: 'float' and 'decimal.Decimal'
+2025-07-30 14:14:01,933 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-30 14:14:02,034 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-30 14:14:02,034 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-30 14:14:02,245 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/gu5fjbyn.json
+2025-07-30 14:14:02,249 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/lsk6xgql.json
+2025-07-30 14:14:02,249 - cmdstanpy - DEBUG - idx 0
+2025-07-30 14:14:02,249 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 14:14:02,249 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=37788', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/gu5fjbyn.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/lsk6xgql.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/prophet_modelb0ow37kz/prophet_model-20250730141402.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 14:14:02,249 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 14:14:02,464 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 14:14:02,497 - prophet - INFO - Making 7 forecasts with cutoffs between 2025-06-10 00:00:00 and 2025-07-22 00:00:00
+2025-07-30 14:14:02,497 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-30 14:14:02,505 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/exk6u_dc.json
+2025-07-30 14:14:02,508 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/08j0_8gi.json
+2025-07-30 14:14:02,508 - cmdstanpy - DEBUG - idx 0
+2025-07-30 14:14:02,508 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 14:14:02,508 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=71498', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/exk6u_dc.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/08j0_8gi.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/prophet_model_0e0cda8/prophet_model-20250730141402.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 14:14:02,508 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 14:14:02,532 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 14:14:02,555 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/bglr1zk3.json
+2025-07-30 14:14:02,558 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/n6kj6p5w.json
+2025-07-30 14:14:02,558 - cmdstanpy - DEBUG - idx 0
+2025-07-30 14:14:02,559 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 14:14:02,559 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=10919', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/bglr1zk3.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/n6kj6p5w.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/prophet_modelglkq_wxa/prophet_model-20250730141402.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 14:14:02,559 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 14:14:02,577 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 14:14:02,602 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/unie5cgp.json
+2025-07-30 14:14:02,605 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/cxqqr6s1.json
+2025-07-30 14:14:02,605 - cmdstanpy - DEBUG - idx 0
+2025-07-30 14:14:02,605 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 14:14:02,605 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=12852', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/unie5cgp.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/cxqqr6s1.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/prophet_modelxv_qxwu2/prophet_model-20250730141402.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 14:14:02,605 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 14:14:02,626 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 14:14:02,652 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/mj7ijg09.json
+2025-07-30 14:14:02,655 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/1hb2r50l.json
+2025-07-30 14:14:02,656 - cmdstanpy - DEBUG - idx 0
+2025-07-30 14:14:02,656 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 14:14:02,656 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=19485', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/mj7ijg09.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/1hb2r50l.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/prophet_modelkh8rrhwt/prophet_model-20250730141402.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 14:14:02,656 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 14:14:02,678 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 14:14:02,702 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/8oiqt3pt.json
+2025-07-30 14:14:02,706 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/927ynbnc.json
+2025-07-30 14:14:02,706 - cmdstanpy - DEBUG - idx 0
+2025-07-30 14:14:02,706 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 14:14:02,706 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=4352', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/8oiqt3pt.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/927ynbnc.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/prophet_model5kt4ga_9/prophet_model-20250730141402.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 14:14:02,707 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 14:14:02,728 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 14:14:02,752 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/ranebss3.json
+2025-07-30 14:14:02,756 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/kll7ffis.json
+2025-07-30 14:14:02,756 - cmdstanpy - DEBUG - idx 0
+2025-07-30 14:14:02,756 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 14:14:02,756 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=18570', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/ranebss3.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/kll7ffis.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/prophet_modeltvysaoxo/prophet_model-20250730141402.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 14:14:02,756 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 14:14:02,777 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 14:14:02,801 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/6rl6hzb6.json
+2025-07-30 14:14:02,805 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/aibouqky.json
+2025-07-30 14:14:02,805 - cmdstanpy - DEBUG - idx 0
+2025-07-30 14:14:02,806 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 14:14:02,806 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=32818', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/6rl6hzb6.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/aibouqky.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpgvr0_oq8/prophet_modelwv21ew6u/prophet_model-20250730141402.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 14:14:02,806 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 14:14:02,837 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 14:14:02,866 - src.analytics.predictive - INFO - Prophet CV MAPE: 2.16%
+2025-07-30 14:14:02,868 - src.analytics.predictive - INFO - Starting XGBoost demand prediction
+2025-07-30 14:14:02,870 - src.engine.core - ERROR - Failed to run item demand prediction: unsupported operand type(s) for /: 'decimal.Decimal' and 'float'
+2025-07-30 14:14:02,870 - src.engine.core - INFO - Step 4: Causal analysis
+2025-07-30 14:14:02,871 - src.analytics.causal - INFO - Analyzing causal effect of has_promotion on revenue
+2025-07-30 14:14:02,886 - dowhy.causal_model - INFO - Model to find the causal effect of treatment ['has_promotion'] on outcome ['revenue']
+2025-07-30 14:14:02,886 - dowhy.causal_model - WARNING - There are an additional 9 variables in the dataset that are not in the graph. Variable names are: '['avg_order_value', 'customer_count', 'date', 'hour_of_day', 'location_id', 'new_customer_count', 'order_count', 'repeat_customer_count', 'total_revenue']'
+2025-07-30 14:14:02,886 - dowhy.causal_identifier.auto_identifier - INFO - Causal effect can be identified.
+2025-07-30 14:14:02,888 - dowhy.causal_identifier.auto_identifier - INFO - Instrumental variables for treatment and outcome:[]
+2025-07-30 14:14:02,888 - dowhy.causal_identifier.auto_identifier - INFO - Frontdoor variables for treatment and outcome:[]
+2025-07-30 14:14:02,888 - dowhy.causal_identifier.auto_identifier - INFO - Number of general adjustment sets found: 1
+2025-07-30 14:14:02,888 - dowhy.causal_identifier.auto_identifier - INFO - Causal effect can be identified.
+2025-07-30 14:14:02,888 - dowhy.causal_model - INFO - propensity_score_matching
+2025-07-30 14:14:02,889 - dowhy.causal_estimator - INFO - INFO: Using Propensity Score Matching Estimator
+2025-07-30 14:14:02,890 - src.analytics.causal - WARNING - PSM estimation failed: This solver needs samples of at least 2 classes in the data, but the data contains only one class: 0
+2025-07-30 14:14:02,891 - dowhy.causal_model - INFO - propensity_score_weighting
+2025-07-30 14:14:02,891 - dowhy.causal_estimator - INFO - INFO: Using Propensity Score Weighting Estimator
+2025-07-30 14:14:02,891 - src.analytics.causal - WARNING - IPW estimation failed: This solver needs samples of at least 2 classes in the data, but the data contains only one class: 0
+2025-07-30 14:14:02,891 - dowhy.causal_model - INFO - linear_regression
+2025-07-30 14:14:02,892 - dowhy.causal_estimator - INFO - INFO: Using Linear Regression Estimator
+2025-07-30 14:14:02,892 - dowhy.causal_estimator - INFO - b: revenue~has_promotion+is_weekend
+2025-07-30 14:14:02,892 - src.analytics.causal - WARNING - Linear regression estimation failed: Pandas data cast to numpy dtype of object. Check input data with np.asarray(data).
+2025-07-30 14:14:02,892 - src.engine.core - ERROR - Failed to run causal analysis: cannot access local variable 'lr_estimate' where it is not associated with a value
+2025-07-30 14:14:02,892 - src.engine.core - INFO - Step 5: Generating optimizations
+2025-07-30 14:14:02,896 - src.analytics.optimization - INFO - Optimizing pricing strategy
+2025-07-30 14:14:02,925 - src.engine.core - ERROR - Failed to generate pricing optimization: 'item_total_amt'
+2025-07-30 14:14:02,925 - src.engine.core - INFO - Step 6: Generating AI insights
+2025-07-30 14:14:02,942 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-30 14:14:13,015 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:14:29,418 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:14:29,444 - src.engine.core - INFO - Daily analysis completed in 32.00 seconds
+2025-07-30 14:14:29,970 - src.api.routes - ERROR - Failed to get item performance: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/api/routes.py", line 365, in get_item_performance
+    "performance_score": float(row.get('revenue', 0)) / max_revenue if max_revenue > 0 else 0
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+2025-07-30 14:14:50,468 - src.llm.agents - INFO - Agent chat query: 如何定义高价值客户
+2025-07-30 14:14:52,516 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:34:51,099 - src.llm.agents - INFO - Agent chat query: 为什么最近销量下降？
+2025-07-30 14:34:53,992 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:34:55,607 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 400 Bad Request"
+2025-07-30 14:34:55,608 - src.llm.azure_client - ERROR - LLM Error: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_A7WSaGYL45QARfzFjXJ4K1Xm", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 14:34:55,608 - src.llm.agents - ERROR - Agent chat failed: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_A7WSaGYL45QARfzFjXJ4K1Xm", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 14:35:02,772 - src.llm.agents - INFO - Agent chat query: 哪些商品需要补货？
+2025-07-30 14:35:04,893 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:35:06,584 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:35:38,430 - src.llm.agents - INFO - Agent chat query: 为什么近七天销量这么低
+2025-07-30 14:35:41,299 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 14:35:42,211 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 400 Bad Request"
+2025-07-30 14:35:42,213 - src.llm.azure_client - ERROR - LLM Error: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_hPxR6kqN8jyPjDKlKjANSy4Y", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 14:35:42,213 - src.llm.agents - ERROR - Agent chat failed: Error code: 400 - {'error': {'message': "An assistant message with 'tool_calls' must be followed by tool messages responding to each 'tool_call_id'. The following tool_call_ids did not have response messages: call_hPxR6kqN8jyPjDKlKjANSy4Y", 'type': 'invalid_request_error', 'param': 'messages', 'code': None}}
+2025-07-30 14:55:39,703 - src.engine.scheduler - INFO - Running hourly monitoring
+2025-07-30 15:09:27,241 - src.llm.agents - INFO - Agent chat query: 你好
+2025-07-30 15:09:29,705 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 15:09:37,577 - src.llm.agents - INFO - Agent chat query: 最近7天的销量怎么样
+2025-07-30 15:09:39,775 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 15:09:42,074 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 15:09:57,246 - src.llm.agents - INFO - Agent chat query: 什么卖得最好
+2025-07-30 15:09:59,609 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 15:10:01,671 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 15:14:57,611 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 15:14:59,732 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 15:15:02,388 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 15:15:02,388 - src.api.app - INFO - Engine initialized successfully
+2025-07-30 15:15:02,391 - src.engine.scheduler - INFO - Scheduled daily analysis at 08:00
+2025-07-30 15:15:02,391 - src.engine.scheduler - INFO - Scheduled hourly monitoring
+2025-07-30 15:15:02,393 - src.engine.scheduler - INFO - Task scheduler started
+2025-07-30 15:15:02,393 - src.api.app - INFO - Scheduler started successfully
+2025-07-30 15:15:02,729 - src.api.routes - INFO - Running new daily analysis
+2025-07-30 15:15:02,729 - src.engine.core - INFO - Starting daily analysis
+2025-07-30 15:15:02,729 - src.engine.core - INFO - Step 1: Collecting data
+2025-07-30 15:15:05,685 - src.engine.core - INFO - Step 2: Detecting anomalies
+2025-07-30 15:15:05,691 - src.analytics.anomaly - INFO - Detecting sales anomalies
+2025-07-30 15:15:05,788 - src.engine.core - ERROR - Failed to detect sales anomalies: unsupported operand type(s) for -: 'float' and 'decimal.Decimal'
+2025-07-30 15:15:05,788 - src.analytics.anomaly - INFO - Detecting pattern changes in y
+2025-07-30 15:15:05,908 - src.engine.core - INFO - Step 3: Running predictions
+2025-07-30 15:15:05,908 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-30 15:15:05,993 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/dzq6cbi0.json
+2025-07-30 15:15:05,996 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/k1gertzw.json
+2025-07-30 15:15:05,997 - cmdstanpy - DEBUG - idx 0
+2025-07-30 15:15:05,997 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 15:15:05,997 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=28696', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/dzq6cbi0.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/k1gertzw.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/prophet_modelcb_xu12h/prophet_model-20250730151505.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 15:15:05,997 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 15:15:06,145 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 15:15:06,177 - prophet - INFO - Making 7 forecasts with cutoffs between 2025-06-10 00:00:00 and 2025-07-22 00:00:00
+2025-07-30 15:15:06,178 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-30 15:15:06,185 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/iope2cgm.json
+2025-07-30 15:15:06,187 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/r1xyj9z0.json
+2025-07-30 15:15:06,188 - cmdstanpy - DEBUG - idx 0
+2025-07-30 15:15:06,188 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 15:15:06,188 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=91864', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/iope2cgm.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/r1xyj9z0.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/prophet_modelws84fqc_/prophet_model-20250730151506.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 15:15:06,188 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 15:15:06,208 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 15:15:06,232 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/ro81vbae.json
+2025-07-30 15:15:06,235 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/tyels6pf.json
+2025-07-30 15:15:06,235 - cmdstanpy - DEBUG - idx 0
+2025-07-30 15:15:06,235 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 15:15:06,235 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=87239', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/ro81vbae.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/tyels6pf.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/prophet_modelc5tfevwz/prophet_model-20250730151506.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 15:15:06,235 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 15:15:06,254 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 15:15:06,278 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/peepfjzq.json
+2025-07-30 15:15:06,281 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/yhf_d1b3.json
+2025-07-30 15:15:06,281 - cmdstanpy - DEBUG - idx 0
+2025-07-30 15:15:06,281 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 15:15:06,282 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=39353', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/peepfjzq.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/yhf_d1b3.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/prophet_model6qe0yntd/prophet_model-20250730151506.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 15:15:06,282 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 15:15:06,299 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 15:15:06,324 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/8l71636v.json
+2025-07-30 15:15:06,327 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/kr_w9e6b.json
+2025-07-30 15:15:06,327 - cmdstanpy - DEBUG - idx 0
+2025-07-30 15:15:06,327 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 15:15:06,327 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=16090', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/8l71636v.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/kr_w9e6b.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/prophet_model66hpozgz/prophet_model-20250730151506.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 15:15:06,327 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 15:15:06,346 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 15:15:06,370 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/bp0oagvf.json
+2025-07-30 15:15:06,373 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/tow_xgk8.json
+2025-07-30 15:15:06,374 - cmdstanpy - DEBUG - idx 0
+2025-07-30 15:15:06,374 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 15:15:06,374 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=70975', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/bp0oagvf.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/tow_xgk8.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/prophet_modelvmw4_eh4/prophet_model-20250730151506.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 15:15:06,374 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 15:15:06,392 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 15:15:06,415 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/g4xi8_q4.json
+2025-07-30 15:15:06,418 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/xw1nu6ij.json
+2025-07-30 15:15:06,418 - cmdstanpy - DEBUG - idx 0
+2025-07-30 15:15:06,418 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 15:15:06,418 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=12827', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/g4xi8_q4.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/xw1nu6ij.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/prophet_modelnd0ypfdj/prophet_model-20250730151506.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 15:15:06,419 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 15:15:06,437 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 15:15:06,462 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/4t8ayv5i.json
+2025-07-30 15:15:06,466 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/tjg_acbc.json
+2025-07-30 15:15:06,466 - cmdstanpy - DEBUG - idx 0
+2025-07-30 15:15:06,466 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 15:15:06,466 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=27261', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/4t8ayv5i.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/tjg_acbc.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/prophet_model3ro66qd_/prophet_model-20250730151506.csv', 'method=optimize', 'algorithm=lbfgs', 'iter=10000']
+2025-07-30 15:15:06,466 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 15:15:06,487 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 15:15:06,515 - src.analytics.predictive - INFO - Prophet CV MAPE: 2.17%
+2025-07-30 15:15:06,517 - src.analytics.predictive - INFO - Starting XGBoost demand prediction
+2025-07-30 15:15:06,518 - src.engine.core - ERROR - Failed to run item demand prediction: unsupported operand type(s) for /: 'decimal.Decimal' and 'float'
+2025-07-30 15:15:06,518 - src.engine.core - INFO - Step 4: Causal analysis
+2025-07-30 15:15:06,520 - src.analytics.causal - INFO - Analyzing causal effect of has_promotion on revenue
+2025-07-30 15:15:06,532 - dowhy.causal_model - INFO - Model to find the causal effect of treatment ['has_promotion'] on outcome ['revenue']
+2025-07-30 15:15:06,532 - dowhy.causal_model - WARNING - There are an additional 9 variables in the dataset that are not in the graph. Variable names are: '['avg_order_value', 'customer_count', 'date', 'hour_of_day', 'location_id', 'new_customer_count', 'order_count', 'repeat_customer_count', 'total_revenue']'
+2025-07-30 15:15:06,532 - dowhy.causal_identifier.auto_identifier - INFO - Causal effect can be identified.
+2025-07-30 15:15:06,534 - dowhy.causal_identifier.auto_identifier - INFO - Instrumental variables for treatment and outcome:[]
+2025-07-30 15:15:06,534 - dowhy.causal_identifier.auto_identifier - INFO - Frontdoor variables for treatment and outcome:[]
+2025-07-30 15:15:06,534 - dowhy.causal_identifier.auto_identifier - INFO - Number of general adjustment sets found: 1
+2025-07-30 15:15:06,534 - dowhy.causal_identifier.auto_identifier - INFO - Causal effect can be identified.
+2025-07-30 15:15:06,534 - dowhy.causal_model - INFO - propensity_score_matching
+2025-07-30 15:15:06,535 - dowhy.causal_estimator - INFO - INFO: Using Propensity Score Matching Estimator
+2025-07-30 15:15:06,536 - src.analytics.causal - WARNING - PSM estimation failed: This solver needs samples of at least 2 classes in the data, but the data contains only one class: 0
+2025-07-30 15:15:06,536 - dowhy.causal_model - INFO - propensity_score_weighting
+2025-07-30 15:15:06,536 - dowhy.causal_estimator - INFO - INFO: Using Propensity Score Weighting Estimator
+2025-07-30 15:15:06,537 - src.analytics.causal - WARNING - IPW estimation failed: This solver needs samples of at least 2 classes in the data, but the data contains only one class: 0
+2025-07-30 15:15:06,537 - dowhy.causal_model - INFO - linear_regression
+2025-07-30 15:15:06,537 - dowhy.causal_estimator - INFO - INFO: Using Linear Regression Estimator
+2025-07-30 15:15:06,537 - dowhy.causal_estimator - INFO - b: revenue~has_promotion+is_weekend
+2025-07-30 15:15:06,538 - src.analytics.causal - WARNING - Linear regression estimation failed: Pandas data cast to numpy dtype of object. Check input data with np.asarray(data).
+2025-07-30 15:15:06,538 - src.engine.core - ERROR - Failed to run causal analysis: cannot access local variable 'lr_estimate' where it is not associated with a value
+2025-07-30 15:15:06,538 - src.engine.core - INFO - Step 5: Generating optimizations
+2025-07-30 15:15:06,542 - src.analytics.optimization - INFO - Optimizing pricing strategy
+2025-07-30 15:15:06,568 - src.engine.core - ERROR - Failed to generate pricing optimization: 'item_total_amt'
+2025-07-30 15:15:06,568 - src.engine.core - INFO - Step 6: Generating AI insights
+2025-07-30 15:15:07,044 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-30 15:15:10,388 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 15:15:17,475 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 15:15:17,479 - src.engine.core - INFO - Daily analysis completed in 14.75 seconds
+2025-07-30 15:15:18,070 - src.api.routes - ERROR - Failed to get item performance: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/api/routes.py", line 365, in get_item_performance
+    "performance_score": float(row.get('revenue', 0)) / max_revenue if max_revenue > 0 else 0
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+2025-07-30 15:15:26,152 - src.analytics.predictive - INFO - Starting Prophet prediction for 7 periods
+2025-07-30 15:15:26,204 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/ddfaz40c.json
+2025-07-30 15:15:26,209 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/y0suqydw.json
+2025-07-30 15:15:26,210 - cmdstanpy - DEBUG - idx 0
+2025-07-30 15:15:26,210 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 15:15:26,210 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=33157', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/ddfaz40c.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/y0suqydw.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/prophet_modelcwr4wcrx/prophet_model-20250730151526.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 15:15:26,210 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 15:15:26,729 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 15:15:26,752 - prophet - INFO - Making 3 forecasts with cutoffs between 2025-07-08 00:00:00 and 2025-07-22 00:00:00
+2025-07-30 15:15:26,752 - prophet - WARNING - Seasonality has period of 365.25 days which is larger than initial window. Consider increasing initial.
+2025-07-30 15:15:26,758 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/5_upvjl2.json
+2025-07-30 15:15:26,760 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/9mbrb01t.json
+2025-07-30 15:15:26,761 - cmdstanpy - DEBUG - idx 0
+2025-07-30 15:15:26,761 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 15:15:26,761 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=89539', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/5_upvjl2.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/9mbrb01t.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/prophet_modelq4g098co/prophet_model-20250730151526.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 15:15:26,761 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 15:15:27,727 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 15:15:27,752 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/cberlb20.json
+2025-07-30 15:15:27,754 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/s5zn2_0j.json
+2025-07-30 15:15:27,754 - cmdstanpy - DEBUG - idx 0
+2025-07-30 15:15:27,754 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 15:15:27,754 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=21831', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/cberlb20.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/s5zn2_0j.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/prophet_modelyyk8r8rw/prophet_model-20250730151527.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 15:15:27,754 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 15:15:28,554 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 15:15:28,577 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/k2703sr0.json
+2025-07-30 15:15:28,579 - cmdstanpy - DEBUG - input tempfile: /var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/1tsrt6ma.json
+2025-07-30 15:15:28,580 - cmdstanpy - DEBUG - idx 0
+2025-07-30 15:15:28,580 - cmdstanpy - DEBUG - running CmdStan, num_threads: None
+2025-07-30 15:15:28,580 - cmdstanpy - DEBUG - CmdStan args: ['/Users/xander/miniconda3/envs/FBR_AI_Engine/lib/python3.12/site-packages/prophet/stan_model/prophet_model.bin', 'random', 'seed=73350', 'data', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/k2703sr0.json', 'init=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/1tsrt6ma.json', 'output', 'file=/var/folders/9_/rff4k37d3vvds76m5ltzbqj00000gp/T/tmpxe30llam/prophet_model6c3nxsmx/prophet_model-20250730151528.csv', 'method=optimize', 'algorithm=newton', 'iter=10000']
+2025-07-30 15:15:28,580 - cmdstanpy - INFO - Chain [1] start processing
+2025-07-30 15:15:29,404 - cmdstanpy - INFO - Chain [1] done processing
+2025-07-30 15:15:29,429 - src.analytics.predictive - INFO - Prophet CV MAPE: 4.14%
+2025-07-30 15:16:14,901 - src.api.routes - ERROR - Failed to get item performance: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/api/routes.py", line 365, in get_item_performance
+    "performance_score": float(row.get('revenue', 0)) / max_revenue if max_revenue > 0 else 0
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+2025-07-30 15:19:47,891 - src.llm.azure_client - INFO - Azure OpenAI client initialized with deployment: gpt-4o-mini
+2025-07-30 15:19:47,898 - src.llm.agents - INFO - Agent chat query: 如何提升客单价？
+2025-07-30 15:19:49,852 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 15:19:52,001 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-30 15:19:53,537 - httpx - INFO - HTTP Request: POST https://fbrdev-ai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2025-07-30 15:20:11,665 - src.api.routes - ERROR - Failed to get item performance: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/api/routes.py", line 365, in get_item_performance
+    "performance_score": float(row.get('revenue', 0)) / max_revenue if max_revenue > 0 else 0
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+2025-07-30 15:21:30,311 - src.api.routes - ERROR - Failed to get item performance: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/api/routes.py", line 365, in get_item_performance
+    "performance_score": float(row.get('revenue', 0)) / max_revenue if max_revenue > 0 else 0
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+2025-07-30 15:23:26,272 - src.api.routes - ERROR - Failed to get item performance: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
+Traceback (most recent call last):
+  File "/Users/xander/PycharmProjects/FBR_AI_Agine/src/api/routes.py", line 365, in get_item_performance
+    "performance_score": float(row.get('revenue', 0)) / max_revenue if max_revenue > 0 else 0
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for /: 'float' and 'decimal.Decimal'
