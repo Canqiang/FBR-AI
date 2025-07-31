@@ -4,7 +4,7 @@ import pgeocode
 import holidays
 import requests
 from typing import Dict, List, Any, Tuple
-from ulity import  normalize_postal_code
+from .utility import  normalize_postal_code
 
 # 设置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
