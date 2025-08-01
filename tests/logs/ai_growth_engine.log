@@ -54,3 +54,42 @@
 2025-07-30 11:55:50,227 - src.data.connectors - ERROR - Failed to connect to ClickHouse: HttpClient.__init__() got an unexpected keyword argument 'verify_ssl'
 2025-07-30 11:55:50,227 - src.data.connectors - ERROR - Failed to convert to DataFrame: Cannot connect to ClickHouse: HttpClient.__init__() got an unexpected keyword argument 'verify_ssl'
 2025-07-30 11:56:14,514 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-31 14:12:23,768 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-31 14:16:50,552 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-31 17:04:20,585 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-07-31 17:06:46,431 - src.causal_inference.extra_features - INFO - Generating holiday features for 1 postal codes.
+2025-07-31 17:07:30,101 - src.causal_inference.extra_features - INFO - Generating holiday features for 1 postal codes.
+2025-07-31 17:07:30,180 - src.causal_inference.extra_features - WARNING - Invalid date format for postal code 95060-5421. Skipping. Error: list indices must be integers or slices, not str
+2025-07-31 17:07:30,180 - src.causal_inference.extra_features - WARNING - No holiday data could be generated.
+2025-07-31 17:08:09,577 - src.causal_inference.extra_features - INFO - Generating holiday features for 1 postal codes.
+2025-07-31 17:08:09,671 - src.causal_inference.extra_features - WARNING - Invalid date format for postal code 95060-5421. Skipping. Error: list indices must be integers or slices, not str
+2025-07-31 17:08:09,671 - src.causal_inference.extra_features - WARNING - No holiday data could be generated.
+2025-07-31 17:08:13,912 - src.causal_inference.extra_features - INFO - Generating holiday features for 1 postal codes.
+2025-07-31 17:08:13,979 - src.causal_inference.extra_features - WARNING - Invalid date format for postal code 95060-5421. Skipping. Error: list indices must be integers or slices, not str
+2025-07-31 17:08:13,979 - src.causal_inference.extra_features - WARNING - No holiday data could be generated.
+2025-07-31 17:08:29,633 - src.causal_inference.extra_features - INFO - Generating holiday features for 1 postal codes.
+2025-07-31 17:08:29,716 - src.causal_inference.extra_features - WARNING - Invalid date format for postal code 95060-5421. Skipping. Error: list indices must be integers or slices, not str
+2025-07-31 17:08:29,716 - src.causal_inference.extra_features - WARNING - No holiday data could be generated.
+2025-07-31 17:08:32,511 - src.causal_inference.extra_features - INFO - Generating holiday features for 1 postal codes.
+2025-07-31 17:08:32,589 - src.causal_inference.extra_features - WARNING - Invalid date format for postal code 95060-5421. Skipping. Error: list indices must be integers or slices, not str
+2025-07-31 17:08:32,589 - src.causal_inference.extra_features - WARNING - No holiday data could be generated.
+2025-07-31 17:08:38,452 - src.causal_inference.extra_features - INFO - Generating weather features for 1 postal codes.
+2025-07-31 17:08:38,523 - src.causal_inference.extra_features - WARNING - Invalid date range for postal code 95060-5421. Skipping. Error: list indices must be integers or slices, not str
+2025-07-31 17:08:38,523 - src.causal_inference.extra_features - WARNING - No weather data was fetched.
+2025-07-31 17:08:41,841 - src.causal_inference.extra_features - INFO - Generating weather features for 1 postal codes.
+2025-07-31 17:08:41,894 - src.causal_inference.extra_features - WARNING - Invalid date range for postal code 95060-5421. Skipping. Error: list indices must be integers or slices, not str
+2025-07-31 17:08:41,894 - src.causal_inference.extra_features - WARNING - No weather data was fetched.
+2025-07-31 17:09:32,742 - src.causal_inference.extra_features - INFO - Generating weather features for 1 postal codes.
+2025-07-31 17:09:34,619 - src.causal_inference.extra_features - INFO - Finished creating weather features. Total rows: 31
+2025-07-31 17:09:49,226 - src.causal_inference.extra_features - INFO - Generating weather features for 1 postal codes.
+2025-07-31 17:09:50,859 - src.causal_inference.extra_features - INFO - Finished creating weather features. Total rows: 31
+2025-08-01 10:54:09,934 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-08-01 10:54:15,999 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-08-01 10:54:26,362 - src.causal_inference.extra_features - INFO - Generating weather features for 1 postal codes.
+2025-08-01 10:54:28,131 - src.causal_inference.extra_features - INFO - Finished creating weather features. Total rows: 31
+2025-08-01 11:46:44,932 - src.causal_inference.extra_features - INFO - Generating holiday features for 1 postal codes.
+2025-08-01 11:46:45,084 - src.causal_inference.extra_features - INFO - Finished creating holiday features. Total rows: 31
+2025-08-01 13:37:19,413 - src.data.connectors - INFO - Connected to ClickHouse using clickhouse_connect: clickhouse-0-0.umetea.net:443
+2025-08-01 13:37:19,694 - src.data.connectors - ERROR - Failed to convert to DataFrame: HTTPDriver for https://clickhouse-0-0.umetea.net:443 received ClickHouse error code 43
+ Code: 43. DB::Exception: Nested type Array(String) cannot be inside Nullable type: In scope SELECT toDate(created_at_pt) AS date, location_id, location_name, extractAll(location_name, '([A-Z]{2})')[1] AS state, COUNTDistinct(order_id) AS order_count, SUM(item_total_amt) AS total_revenue, AVG(item_total_amt) AS avg_order_value, SUM(item_discount) AS total_discount, SUM(multiIf(item_discount > 0, 1, 0)) AS discount_orders, COUNTDistinct(customer_id) AS unique_customers, SUM(multiIf(is_loyalty = 1, 1, 0)) AS loyalty_orders, SUM(multiIf(has(campaign_names, 'BOGO'), 1, 0)) AS bogo_orders, COUNTDistinct(category_name) AS category_diversity, toDayOfWeek(created_at_pt) AS day_of_week, toHour(created_at_pt) AS hour_of_day FROM dw.fact_order_item_variations WHERE (created_at_pt >= '2025-06-01') AND (created_at_pt <= '2025-07-31') AND (pay_status = 'COMPLETED') GROUP BY date, location_id, location_name, state. (ILLEGAL_TYPE_OF_ARGUMENT) (version 24.7.3.42 (official build))
+
