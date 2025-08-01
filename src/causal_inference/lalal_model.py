@@ -7,6 +7,7 @@ import numpy as np
 pd.options.display.max_columns = None
 
 from datetime import datetime, timedelta
+import http.client
 import clickhouse_connect
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
