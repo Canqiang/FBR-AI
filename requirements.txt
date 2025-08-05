@@ -15,7 +15,6 @@ cvxpy~=1.4.4
 
 # LLM/AI
 langchain~=0.3.26
-langchain-openai~=0.3.28
 
 # API
 fastapi~=0.116.1
@@ -38,3 +37,9 @@ dashscope~=1.24.0
 volcengine~=1.0.194
 networkx~=3.4.2
 econml~=0.16.0
+schedule~=1.2.2
+statsmodels~=0.14.4
+pgeocode~=0.5.0
+holidays~=0.48
+seaborn~=0.13.2
+pytest~=8.4.1
